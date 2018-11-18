@@ -1,0 +1,8 @@
+# MAC
+.DS_Store
+.AppleDouble
+.LSOverride
+
+#
+temp/*
+test/*
