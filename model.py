@@ -38,15 +38,16 @@ class Model(object):
 	    scores = tf.matmul(output, W) +b
 	    
 	    return tf.reshape(scores, shape = [-1, shape[1], self.config.ntags]), W, b
+        
 
-	def CRF_LOSS_layer(self, scores, labels, sequence_lengths, W, b):
-		log_likelihood, trans_matrix = tf.contrib.crf.crf_log_likelihood(scores, 
-		labels, sequence_lengths)
-		loss = tf.reduce_mean(-log_likelihood)
-		# regularization the W, b
-		if loss_regularization :
-			reg = tf.nn.l2_loss(W) + tf.nn.l2_loss(b)
-			cost += reg * self.config.l2_reg
+    def CRF_LOSS_layer(self, scores, labels, sequence_lengths, W, b):
+    	log_likelihood, trans_matrix = tf.contrib.crf.crf_log_likelihood(scores, 
+    	labels, sequence_lengths)
+    	loss = tf.reduce_mean(-log_likelihood)
+    	# regularization the W, b
+    	if loss_regularization :
+    		reg = tf.nn.l2_loss(W) + tf.nn.l2_loss(b)
+    		cost += reg * self.config.l2_reg
         return trans_matrix, loss
 
 
