@@ -4,7 +4,7 @@
 .LSOverride
 
 #
-.ipynb_checkpoints
+.ipynb_checkpoints/
 temp/*
 data/*
 __pycache__/
