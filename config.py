@@ -13,7 +13,7 @@ class Config():
 
 
     # embeddings_size
-    dim_word = 300
+    dim_word = 100
     dim_char = 100
 
     # model hyperparameters
@@ -25,6 +25,7 @@ class Config():
     loss_regularization = False
     l2_reg       = 0
     n_epochs          = 15
+    nepoch_no_imprv = 3
 
 
     # The probability that each element is kept.
@@ -34,29 +35,45 @@ class Config():
     lr               = 0.001
     lr_decay         = 0.9
     clip             = -1 # if negative, no clipping
-    n_epoch_no_imprv  = 3
 
+
+    # dataset files
+    path_train = 'data/CoNLL2003/eng.train'
+    path_eval = 'data/CoNLL2003/eng.testa'
+    path_test = 'data/CoNLL2003/eng.testb'
+    filename_glove = 'data/glove/glove.6B.100d.txt'
+
+    # file format
+    separator = ' '
+    lowercase = True
+
+    # index files
+    save_idx = True
+    save_table = False
+    lookup_table_file_path = None
+    file_token_idx = 'data/idx/token2idx.json'
+    file_char_idx = 'data/idx/char2idx.json'
+    file_label_idx = 'data/idx/tag2idx.json'
+
+
+    # to be update
+    n_label = -1
+    n_char = -1
+    n_word = -1
+    lookup_table = None
+    def set_n_label(self, n_):
+        n_label = n_
+    def set_n_char(self, n_):
+        n_char = n_
+    def set_n_word(self, n_):
+        n_word = n_
+    def set_lookup_table(self, lookup_table):
+        lookup_table = lookup_table
 
 
 
 
 
     def __init__(self):
+        pass
 
-        self.load()
-
-
-    
-    def load(self):
-        
-        # load pre-trained embeddings
-        self.pretrained_embeddings = get_trimmed_glove_vectors(self.filename_trimmed)
-
-
-        # compute from corpus 
-        self.nwords = 10000000    
-        self.nchars = 48     
-        self.ntags  = 5     
-
-
-    
