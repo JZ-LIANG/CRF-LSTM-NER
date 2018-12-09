@@ -10,3 +10,4 @@ temp/*
 data/*
 __pycache__/
 Training_on_CoNLL_2003.ipynb
+test/.ipynb_checkpoints
