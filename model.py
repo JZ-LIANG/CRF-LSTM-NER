@@ -259,7 +259,7 @@ class Model(object):
         self.saver.restore(self.sess, path_model)
         
     def close(self):
-        elf.sess.close()
+        self.sess.close()
         
     def get_fd(self, x_batch, y_batch):
         sentences = [list(zip(*x))[1] for x in x_batch]
