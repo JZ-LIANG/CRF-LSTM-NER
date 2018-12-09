@@ -1,15 +1,19 @@
 import os
 import tensorflow as tf
+from pre_processing import next_batch, pad_sentence, pad_word, get_chunks
+import codecs
+import numpy as np
 
 class Model(object):
     """CRF-BiLSTM NER model"""
 
     def __init__(self, config):
         """
-		Load the hyperparams in config
+        Load the hyperparams in config
 
         """
         self.config = config
+        self.sess = None
 
 
 
@@ -20,7 +24,7 @@ class Model(object):
         with tf.variable_scope('backward'): 
             bw = tf.contrib.rnn.LSTMCell(hidden_state_size, state_is_tuple=True)
 
-        output = tf.nn.bidirectional_dynamic_rnn(fw, bw, inputs, sequence_length=word_lengths, dtype=tf.float32)
+        output = tf.nn.bidirectional_dynamic_rnn(fw, bw, inputs, sequence_length=sequence_length, dtype=tf.float32)
 
         return output
 
@@ -32,7 +36,7 @@ class Model(object):
         b = tf.get_variable("b", shape = [self.config.n_label], 
                             dtype = tf.float32, initializer = tf.zeros_initializer())
 
-        shape = tp.shape(output)
+        shape = tf.shape(output)
         output = tf.reshape(output, shape = [-1, 2*self.config.hidden_size_lstm])
         scores = tf.matmul(output, W) +b
 
@@ -44,7 +48,7 @@ class Model(object):
         labels, sequence_lengths)
         loss = tf.reduce_mean(-log_likelihood)
         # regularization the W, b
-        if loss_regularization :
+        if self.config.loss_regularization :
             reg = tf.nn.l2_loss(W) + tf.nn.l2_loss(b)
             cost += reg * self.config.l2_reg
         return trans_matrix, loss
@@ -85,7 +89,7 @@ class Model(object):
                 shape=[self.config.n_char, self.config.dim_char])
 
             # shape =[batch_size, max_length of sentence, max_length of word, char_embedd_size]
-            char_embeddings = tf.nn.embedding_lookup(_char_embeddings,
+            char_embeddings = tf.nn.embedding_lookup(_char_embedding_table,
                     self.char_ids, name="char_embeddings")
 
             # reshape sequence to the requirement of rnn, put the time dimension on axis=1
@@ -100,15 +104,15 @@ class Model(object):
 
             # sub-BiLSTM to generate character embeddings
             with tf.name_scope("sub-BiLSTM"):
-                # # for main LSTM we extract only final hidden state
-                _, ((_, state_fw), (_, state_bw)) = Bi_LSTM_Layer(self.config.hidden_size_char, 
+                # # for sub LSTM we extract only final hidden state
+                _, ((_, state_fw), (_, state_bw)) = self.Bi_LSTM_Layer(self.config.hidden_size_char, 
                     char_embeddings, word_lengths)
 
                 # shape = [batch_size * max_length of sentence, 2*char hidden size]
                 trained_embeddings = tf.concat([state_fw, state_bw], axis=-1)
 
                 # shape = (batch size, max_length of sentence, 2*char hidden size)
-                trained_embeddings = tf.reshape(output,shape=[shape[0], shape[1], 2*self.config.hidden_size_char])
+                trained_embeddings = tf.reshape(trained_embeddings,shape=[shape[0], shape[1], 2*self.config.hidden_size_char])
 
 
         # concat to get thefinal embedding
@@ -118,7 +122,7 @@ class Model(object):
         # main Bi-LSTM layer
         with tf.variable_scope("Bi-LSTM"):
             # for main LSTM we extract outpur on each time steps
-            (output_fw, output_bw), _ = Bi_LSTM_Layer(self.config.hidden_size_lstm, 
+            (output_fw, output_bw), _ = self.Bi_LSTM_Layer(self.config.hidden_size_lstm, 
                 self.word_embeddings, self.sentence_lengths)
 
             output = tf.concat([output_fw, output_bw], axis=-1)
@@ -127,11 +131,11 @@ class Model(object):
 
         # FC layer to project word+context representation to a score vector
         with tf.variable_scope("FCNN"):
-            self.scores, W, b = FCNN_layer(output)
+            self.scores, W, b = self.FCNN_layer(output)
 
         # CRF layer + loss
         with tf.variable_scope("CRF_LOSS"):
-            self.trans_params, self.loss =CRF_LOSS_layer(self.scores, self.labels, self.sentence_lengths, W, b)
+            self.trans_params, self.loss = self.CRF_LOSS_layer(self.scores, self.labels, self.sentence_lengths, W, b)
 
 
         with tf.variable_scope("train"):
@@ -150,6 +154,7 @@ class Model(object):
         """Defines self.sess and initialize the variables"""
         print("Initializing tf session")
         self.sess = tf.Session()
+        self.saver  = tf.train.Saver()
         self.sess.run(tf.global_variables_initializer())
 
 
@@ -163,20 +168,25 @@ class Model(object):
         # early stopping metric
         nepoch_no_imprv = 0 
 
-        for epoch in range(self.config.nepochs):
-            print("Epoch {:} out of {:}".format(epoch + 1, self.config.nepochs))
+        for epoch in range(self.config.n_epochs):
+            print("Epoch {:} out of {:}".format(epoch + 1, self.config.n_epochs))
 
-            for i, (words, labels) in enumerate(next_batch(train_x, train_y, self.config.batch_size, shuffle = True)):
-                fd, _ = self.padding (words, labels)
+            # self.config.batch_size
+            for i, (x_batch, y_batch) in enumerate(next_batch(train_x, train_y, self.config.batch_size, shuffle = True)):
+                # print("batch:{}".format(i))
+                fd, sentence_lengths,_,_ = self.get_fd(x_batch, y_batch)
+                
                 _, train_loss  = self.sess.run([self.train_op, self.loss], feed_dict=fd)
 
-            metrics = self.evaluate(dev)
-            print("Epoch {:} 's F1 ={:}".format(epoch + 1, metrics[F1]))
+            metrics = self.evaluate(dev_x, dev_y)
+            print("Epoch {:} 's F1 ={:}".format(epoch + 1, metrics["f1"]))
 
-            if metrics[F1] >= best_F1:
+            if metrics["f1"] >= best_F1:
                 nepoch_no_imprv = 0
-                best_F1 = metrics[F1]
+                best_F1 = metrics["f1"]
                 print("- new best score!")
+                if self.config.if_save_model:
+                    self.save_session()
 
             else:
                 nepoch_no_imprv += 1
@@ -195,23 +205,24 @@ class Model(object):
         """
         accs = []
         correct_preds, total_correct, total_preds = 0., 0., 0.
-        for i, (words, labels) in enumerate(next_batch(dev_x, dev_y, self.config.batch_size, shuffle = True)):
-            fd, sentence_lengths = self.padding(words, None)
-
+        for i, (x_batch, y_batch) in enumerate(next_batch(dev_x, dev_y, self.config.batch_size, shuffle = True)):
+            
+            fd, sentence_lengths,label_padded,_ = self.get_fd(x_batch, y_batch)
+            
             scores, trans_params = self.sess.run(
                 [self.scores, self.trans_params], feed_dict=fd)
 
-            viterbi_sequences = self.viterbi_decode(scores, sentence_lengths)
+            viterbi_sequences = self.viterbi_decode(scores, sentence_lengths, trans_params)
 
-            for lab, lab_pred, length in zip(labels, viterbi_sequences,
+            for lab, lab_pred, length in zip(label_padded, viterbi_sequences,
                                              sentence_lengths):
                 lab      = lab[:length]
                 lab_pred = lab_pred[:length]
                 accs    += [a==b for (a, b) in zip(lab, lab_pred)]
 
-                lab_chunks      = set(get_chunks(lab, self.config.vocab_tags))
+                lab_chunks      = set(get_chunks(lab, self.config.idx2label))
                 lab_pred_chunks = set(get_chunks(lab_pred,
-                                                 self.config.vocab_tags))
+                                                 self.config.idx2label))
 
                 correct_preds += len(lab_chunks & lab_pred_chunks)
                 total_preds   += len(lab_pred_chunks)
@@ -227,26 +238,82 @@ class Model(object):
 
 
 
-    def viterbi_decode(self, scores, sequence_lengths):
+    def viterbi_decode(self, scores, sequence_lengths, trans_params):
+        viterbi_sequences = []
         # iterate over the sentences because no batching in vitervi_decode
         for score, sequence_length in zip(scores, sequence_lengths):
-            logit = logit[:sequence_length] # keep only the valid steps
+            logit = score[:sequence_length] # keep only the valid steps
             viterbi_seq, viterbi_score = tf.contrib.crf.viterbi_decode(
                     logit, trans_params)
             viterbi_sequences += [viterbi_seq]
 
         return viterbi_sequences
+    
+    def save_session(self):
+        """Saves session = weights"""
+        if not os.path.exists(self.config.path_model):
+            os.makedirs(self.config.path_model)
+        self.saver.save(self.sess, self.config.path_model)
+        
+    def restore_session(self, path_model):
+        self.saver.restore(self.sess, path_model)
+        
+    def close(self):
+        elf.sess.close()
+        
+    def get_fd(self, x_batch, y_batch):
+        sentences = [list(zip(*x))[1] for x in x_batch]
+        char_sentences = [list(zip(*x))[0] for x in x_batch]
+
+        sentences_padded, sentence_lengths = pad_sentence(sentences)
+        label_padded, _ = pad_sentence(y_batch)
+        chars_padded, chars_lengths = pad_word(char_sentences)
+
+        fd = {
+            self.word_ids: sentences_padded,
+            self.sentence_lengths: sentence_lengths,
+            self.char_ids: chars_padded,
+            self.word_lengths: chars_lengths,
+            self.labels: label_padded,
+        }
+        return fd,sentence_lengths,label_padded,sentences
 
 
+    def test(self, test_x, test_y, path_output_file, path_result, path_model = None):
+        # check the sess exist
+        if path_model != None:
+            self.restore_session(path_model)
+        elif self.sess == None and path_model == None:
+            print('can not find model, exit')
+            exit()
+            
+        row = ''
+        output_file = codecs.open(path_output_file, 'w', 'UTF-8')
+        first_row = 'token' + '\t' + 'true' + '\t' + 'prediction'+ '\n'
+        output_file.write(first_row)
+        for i, (x_batch, y_batch) in enumerate(next_batch(test_x, test_y, self.config.batch_size, shuffle = False)):
+        # predict  
+            fd, sentence_lengths, _, sentences = self.get_fd(x_batch, y_batch)
 
-    # def padding (self, words, labels):
+            scores, trans_params = self.sess.run(
+                [self.scores, self.trans_params], feed_dict=fd)
+            viterbi_sequences = self.viterbi_decode(scores, sentence_lengths, trans_params)
 
+            # write to output file
 
-    #     return  feed, sentence_lengths
+            for sentence, golden_label, prediction in zip(sentences,y_batch, viterbi_sequences):
+                for i in range(len(golden_label)):
+                    row = self.config.idx2token[sentence[i]] + '\t' + self.config.idx2label[golden_label[i]] + '\t' + self.config.idx2label[prediction[i]] 
+                    output_file.write(row + '\n')
+                output_file.write('\n')
+        output_file.close()
 
+        # write F1 result
+        script = 'conlleval'
+        shell_command = 'perl {0} < {1} > {2}'.format(script, path_output_file, path_result)
+        os.system(shell_command)
+        with open(path_result, 'r') as f:
+            classification_report = f.read()
+            print(classification_report) 
+            print()
 
-
-
-
-       
-     

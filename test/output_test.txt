@@ -1,0 +1,17 @@
+token	true	prediction
+1	O	O
+2	O	O
+3	O	O
+4	B-LOC	B-LOC
+5	O	O
+6	B-LOC	B-LOC
+
+1	B-LOC	B-LOC
+2	O	O
+3	O	O
+4	B-LOC	B-LOC
+
+1	O	O
+2	B-LOC	B-LOC
+
+
