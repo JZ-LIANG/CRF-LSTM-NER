@@ -4,6 +4,7 @@
 .LSOverride
 
 #
+to_be_improved.txt
 .ipynb_checkpoints/
 temp/*
 data/*
