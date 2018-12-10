@@ -1,5 +1,5 @@
 # CRF-LSTM-NER
-a CRF-LSTM NER model in Tensorflow
+a CRF-LSTM NER model in Tensorflow. <br>
 a example on how to use it can be found in "[Example.ipynb](https://github.com/JZ-LIANG/CRF-LSTM-NER/blob/master/Example.ipynb)"
 
 
