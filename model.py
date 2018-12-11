@@ -74,6 +74,9 @@ class Model(object):
             # shape = [batch_size, max_length of sentence]
             self.labels = tf.placeholder(tf.int32, shape = [None, None], name = "labels")
 
+            # learning rate
+            self.lr = tf.placeholder(dtype=tf.float32, shape=[], name="lr")
+
 
 
         with tf.variable_scope("pretrained_embedding"): 
@@ -115,9 +118,10 @@ class Model(object):
                 trained_embeddings = tf.reshape(trained_embeddings,shape=[shape[0], shape[1], 2*self.config.hidden_size_char])
 
 
-        # concat to get thefinal embedding
+        # concat to get the final embedding
         word_embeddings = tf.concat([word_embeddings, trained_embeddings], axis = -1)
         self.word_embeddings = tf.nn.dropout(word_embeddings, self.config.dropout)
+
 
         # main Bi-LSTM layer
         with tf.variable_scope("Bi-LSTM"):
@@ -140,7 +144,8 @@ class Model(object):
 
         with tf.variable_scope("train"):
 
-            optimizer = tf.train.AdamOptimizer(self.config.lr)
+            optimizer = tf.train.AdamOptimizer(self.lr)
+            print('learning rate = ',self.lr)
             # gradient clipping if clip is positive
             if self.config.clip > 0: 
                 grads, vs     = zip(*optimizer.compute_gradients(self.loss))
@@ -167,6 +172,7 @@ class Model(object):
         best_F1 = 0
         # early stopping metric
         nepoch_no_imprv = 0 
+        lr = self.config.lr
 
         for epoch in range(self.config.n_epochs):
             print("Epoch {:} out of {:}".format(epoch + 1, self.config.n_epochs))
@@ -174,17 +180,23 @@ class Model(object):
             # self.config.batch_size
             for i, (x_batch, y_batch) in enumerate(next_batch(train_x, train_y, self.config.batch_size, shuffle = True)):
                 # print("batch:{}".format(i))
-                fd, sentence_lengths,_,_ = self.get_fd(x_batch, y_batch)
+                fd, sentence_lengths,_,_ = self.get_fd(x_batch, y_batch, lr)
                 
                 _, train_loss  = self.sess.run([self.train_op, self.loss], feed_dict=fd)
 
             metrics = self.evaluate(dev_x, dev_y)
             print("Epoch {:} 's F1 ={:}".format(epoch + 1, metrics["f1"]))
 
+            # if there is more then 1 epoch without improvement, try a small lr
+            if (self.config.lr_decay < 1) and (nepoch_no_imprv > 1):
+                lr *= self.config.lr_decay
+
+
+
             if metrics["f1"] >= best_F1:
                 nepoch_no_imprv = 0
                 best_F1 = metrics["f1"]
-                print("- new best score!")
+                print("- new best F1, save new model.")
                 if self.config.if_save_model:
                     self.save_session()
 
@@ -261,7 +273,7 @@ class Model(object):
     def close(self):
         self.sess.close()
         
-    def get_fd(self, x_batch, y_batch):
+    def get_fd(self, x_batch, y_batch, lr):
         sentences = [list(zip(*x))[1] for x in x_batch]
         char_sentences = [list(zip(*x))[0] for x in x_batch]
 
@@ -275,6 +287,7 @@ class Model(object):
             self.char_ids: chars_padded,
             self.word_lengths: chars_lengths,
             self.labels: label_padded,
+            self.lr = lr
         }
         return fd,sentence_lengths,label_padded,sentences
 
