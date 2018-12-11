@@ -273,7 +273,7 @@ class Model(object):
     def close(self):
         self.sess.close()
         
-    def get_fd(self, x_batch, y_batch, lr):
+    def get_fd(self, x_batch, y_batch, lr = None):
         sentences = [list(zip(*x))[1] for x in x_batch]
         char_sentences = [list(zip(*x))[0] for x in x_batch]
 
