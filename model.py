@@ -287,7 +287,7 @@ class Model(object):
             self.char_ids: chars_padded,
             self.word_lengths: chars_lengths,
             self.labels: label_padded,
-            self.lr = lr
+            self.lr: lr
         }
         return fd,sentence_lengths,label_padded,sentences
 
