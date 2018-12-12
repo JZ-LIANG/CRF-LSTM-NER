@@ -164,14 +164,14 @@ class Model(object):
 
 
 
-    def train(self, train_x, train_y, dev_x, dev_y, model_path = None):
+    def train(self, train_x, train_y, dev_x, dev_y, path_model = None):
         """
         train model
 
         """
         # re-load the model
         if path_model != None:
-            self.restore_session(model_path)
+            self.restore_session(path_model)
             print("Model restored.")
         elif self.sess == None and path_model == None:
             print('can not find model, exit')
