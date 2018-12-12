@@ -145,7 +145,6 @@ class Model(object):
         with tf.variable_scope("train"):
 
             optimizer = tf.train.AdamOptimizer(self.lr)
-            print('learning rate = ',self.lr)
             # gradient clipping if clip is positive
             if self.config.clip > 0: 
                 grads, vs     = zip(*optimizer.compute_gradients(self.loss))
