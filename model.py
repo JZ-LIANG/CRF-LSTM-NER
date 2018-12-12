@@ -74,9 +74,9 @@ class Model(object):
             # shape = [batch_size, max_length of sentence]
             self.labels = tf.placeholder(tf.int32, shape = [None, None], name = "labels")
 
-            # learning rate
+            # learning rate & dropout_rate
             self.lr = tf.placeholder(dtype=tf.float32, shape=[], name="lr")
-
+            self.dropout_rate = tf.placeholder(dtype=tf.float32, shape=[], name="dropout_rate")
 
 
         with tf.variable_scope("pretrained_embedding"): 
@@ -120,7 +120,7 @@ class Model(object):
 
         # concat to get the final embedding
         word_embeddings = tf.concat([word_embeddings, trained_embeddings], axis = -1)
-        self.word_embeddings = tf.nn.dropout(word_embeddings, self.config.dropout)
+        self.word_embeddings = tf.nn.dropout(word_embeddings, self.dropout_rate)
 
 
         # main Bi-LSTM layer
@@ -130,7 +130,7 @@ class Model(object):
                 self.word_embeddings, self.sentence_lengths)
 
             output = tf.concat([output_fw, output_bw], axis=-1)
-            output = tf.nn.dropout(output, self.config.dropout)
+            output = tf.nn.dropout(output, self.dropout_rate)
 
 
         # FC layer to project word+context representation to a score vector
@@ -164,11 +164,20 @@ class Model(object):
 
 
 
-    def train(self, train_x, train_y, dev_x, dev_y):
+    def train(self, train_x, train_y, dev_x, dev_y, model_path = None):
         """
         train model
 
         """
+        # re-load the model
+        if path_model != None:
+            self.restore_session(model_path)
+            print("Model restored.")
+        elif self.sess == None and path_model == None:
+            print('can not find model, exit')
+            exit()
+
+
         best_F1 = 0
         # early stopping metric
         nepoch_no_imprv = 0 
@@ -180,7 +189,7 @@ class Model(object):
             # self.config.batch_size
             for i, (x_batch, y_batch) in enumerate(next_batch(train_x, train_y, self.config.batch_size, shuffle = True)):
                 # print("batch:{}".format(i))
-                fd, sentence_lengths,_,_ = self.get_fd(x_batch, y_batch, lr)
+                fd, sentence_lengths,_,_ = self.get_fd(x_batch, y_batch, lr, dropout_rate = self.config.dropout)
                 
                 _, train_loss  = self.sess.run([self.train_op, self.loss], feed_dict=fd)
 
@@ -273,7 +282,7 @@ class Model(object):
     def close(self):
         self.sess.close()
         
-    def get_fd(self, x_batch, y_batch, lr = None):
+    def get_fd(self, x_batch, y_batch, lr = None, dropout_rate = 1):
         sentences = [list(zip(*x))[1] for x in x_batch]
         char_sentences = [list(zip(*x))[0] for x in x_batch]
 
@@ -287,7 +296,8 @@ class Model(object):
             self.char_ids: chars_padded,
             self.word_lengths: chars_lengths,
             self.labels: label_padded,
-            self.lr: lr
+            self.lr: lr,
+            self.dropout_rate: dropout_rate
         }
         return fd,sentence_lengths,label_padded,sentences
 
@@ -296,6 +306,7 @@ class Model(object):
         # check the sess exist
         if path_model != None:
             self.restore_session(path_model)
+            print("Model restored.")
         elif self.sess == None and path_model == None:
             print('can not find model, exit')
             exit()
