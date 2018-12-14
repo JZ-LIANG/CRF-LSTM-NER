@@ -3,6 +3,7 @@ import tensorflow as tf
 from pre_processing import next_batch, pad_sentence, pad_word, get_chunks
 import codecs
 import numpy as np
+import time
 
 class Model(object):
     """CRF-BiLSTM NER model"""
@@ -184,6 +185,7 @@ class Model(object):
 
         for epoch in range(self.config.n_epochs):
             print("Epoch {:} out of {:}".format(epoch + 1, self.config.n_epochs))
+            epoch_start_time = time.time()
 
             # self.config.batch_size
             for i, (x_batch, y_batch) in enumerate(next_batch(train_x, train_y, self.config.batch_size, shuffle = True)):
@@ -193,7 +195,7 @@ class Model(object):
                 _, train_loss  = self.sess.run([self.train_op, self.loss], feed_dict=fd)
 
             metrics = self.evaluate(dev_x, dev_y)
-            print("Epoch {:} 's F1 ={:}".format(epoch + 1, metrics["f1"]))
+            print("Epoch {:} 's F1 ={:}, epoch_runing_time ={:} .".format(epoch + 1, metrics["f1"], (time.time() - start_time)))
 
             # if there is more then 1 epoch without improvement, try a small lr
             if (self.config.lr_decay < 1) and (nepoch_no_imprv > 1):
