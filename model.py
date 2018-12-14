@@ -195,7 +195,7 @@ class Model(object):
                 _, train_loss  = self.sess.run([self.train_op, self.loss], feed_dict=fd)
 
             metrics = self.evaluate(dev_x, dev_y)
-            print("Epoch {:} 's F1 ={:}, epoch_runing_time ={:} .".format(epoch + 1, metrics["f1"], (time.time() - start_time)))
+            print("Epoch {:} 's F1 ={:}, epoch_runing_time ={:} .".format(epoch + 1, metrics["f1"], (time.time() - epoch_start_time)))
 
             # if there is more then 1 epoch without improvement, try a small lr
             if (self.config.lr_decay < 1) and (nepoch_no_imprv > 1):
