@@ -259,6 +259,8 @@ def get_inputs(dataset, token2idx, char2idx, label2idx, config):
         # 1. preprocess word
         if lowercase:
             word = token.lower()
+        else:
+            word = token
         # don't use NUM
 #         if word.isdigit():
 #             word = NUM
