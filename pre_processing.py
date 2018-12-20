@@ -39,7 +39,18 @@ def initial_2idxs_fasttext(config):
     vocab_label = [x[0] for x in vocab_label.most_common()]
     vocab_char = [x[0] for x in vocab_char.most_common()]
 
-    return vocab_token_corpus, vocab_label, vocab_char
+
+
+    return vocab_token_corpus, vocab_char, vocab_label
+
+def get_fasttext_embedding(vocab_token_corpus, path_bin_file, path_vocab_file, path_fasttext_embedding_file):
+    with open(path_vocab_file, 'w+') as vocab_file:
+        for i, token in enumerate(vocab_token_corpus):
+            vocab_file.write(token)
+            if i < len(vocab_token_corpus) - 1:
+                vocab_file.write('\n')
+
+
 
 
 
