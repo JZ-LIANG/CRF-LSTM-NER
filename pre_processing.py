@@ -14,6 +14,37 @@ path_train = '../data/CoNLL2003/eng.train'
 path_eval = '../data/CoNLL2003/eng.testa'
 path_test = '../data/CoNLL2003/eng.testb'
 
+
+
+
+def initial_2idxs_fasttext(config):
+
+
+    start = timeit.default_timer()
+    print("Building Fasttext vocab...")
+    count_token = {} 
+    count_label = {} 
+    count_character = {}
+
+    datasets = [('train',config.path_train), ('eval', config.path_eval), ('test', config.path_test)]
+    for dataset in datasets:
+        count_token[dataset[0]], count_label[dataset[0]], count_character[dataset[0]] = get_vocabs(dataset[1], separator = config.separator, lowercase = False)
+
+    vocab_token_corpus = count_token['train'] + count_token['eval'] + count_token['test']
+    vocab_label = count_label['train'] + count_label['eval'] + count_label['test']
+    vocab_char = count_character['train'] + count_character['eval'] + count_character['test']
+
+    # sorted the vocabu by frequency 
+    vocab_token_corpus = [x[0] for x in vocab_token_corpus.most_common()]
+    vocab_label = [x[0] for x in vocab_label.most_common()]
+    vocab_char = [x[0] for x in vocab_char.most_common()]
+
+    return vocab_token_corpus, vocab_label, vocab_char
+
+
+
+
+
 def initial_2idxs(config):
 
 
