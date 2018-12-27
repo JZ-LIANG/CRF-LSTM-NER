@@ -1,6 +1,5 @@
 import logging
 
-
 class Config():
     """
     Initialize hyperparameters
@@ -12,21 +11,21 @@ class Config():
     # pretrained embedding 
     # dataset
     # vocab 
-    config_NO = ='glove, dropout_rate = 0.9, main_lstm = 300'
 
+    config_NO ='Fasttext_wiki, dropout_rate = 0.5, main_lstm = 300'
     # embeddings_size
-    dim_word = 100
-    dim_char = 100
+    dim_word = 300
+    dim_char = 50
 
     # model hyperparameters
-    hidden_size_char = 100 # lstm on chars
+    hidden_size_char = 150 # lstm on chars
     hidden_size_lstm = 300 # lstm on word embeddings
 
     # training
     train_embeddings = False
     loss_regularization = False
-    n_epochs          = 5
-    nepoch_no_imprv = 3
+    n_epochs          = 50
+    nepoch_no_imprv = 6
     # if apply regularization of W and b in loss function
     loss_regularization = False
     # regularization rate
@@ -34,11 +33,11 @@ class Config():
 
 
     # The probability that each element is kept.
-    dropout          = 0.9
-    batch_size       = 50
+    dropout          = 0.5
+    batch_size       = 30
     lr_method        = "adam"
     lr               = 0.001
-    lr_decay         = 0.9
+    lr_decay         = 0.85
     clip             = -1 # if negative, no clipping
 
 
@@ -46,26 +45,32 @@ class Config():
     path_train = 'data/CoNLL2003/eng.train'
     path_eval = 'data/CoNLL2003/eng.testa'
     path_test = 'data/CoNLL2003/eng.testb'
-    filename_glove = 'data/glove/glove.6B.100d.txt'
+
+    # fasttext 
+    command = '../../word_embedding/fastText/fasttext'
+    option = 'print-word-vectors'
+    bin_file = '../../word_embedding/fastText/data/wiki.simple.bin'
+    fasttext_embedding_file = '../../word_embedding/fastText/data/fasttext_CoNLL_lookup_table.txt'
+    vocab_file = '../../word_embedding/fastText/data/fasttext_CoNLL_vocabs.txt'
 
 
     # save model and output
     if_save_model = True
 
-    path_output_train = 'output/result/train.txt'
-    path_output_test = 'output/result/test.txt'
-    path_output_eval = 'output/result/eval.txt'
-    path_result_train = 'output/result/train_result.txt'
-    path_result_eval = 'output/result/eval_result.txt'
-    path_result_test = 'output/result/test_result.txt'
-    path_model =  'output/result/model/'
-    path_log = 'output/result/model/log.log'
-    log_name = 'glove'
+    path_output_train = 'output/result_fastext/train.txt'
+    path_output_test = 'output/result_fastext/test.txt'
+    path_output_eval = 'output/result_fastext/eval.txt'
+    path_result_train = 'output/result_fastext/train_result.txt'
+    path_result_eval = 'output/result_fastext/eval_result.txt'
+    path_result_test = 'output/result_fastext/test_result.txt'
+    path_model =  'output/result_fastext/model/'
+    path_log = 'output/result_fastext/model/log.log'
+    log_name = 'fasttext1'
 
 
     # file format
     separator = ' '
-    lowercase = True
+    lowercase = False
 
     # index files
     save_idx = True
@@ -92,6 +97,7 @@ class Config():
         logging.basicConfig(filename= path_log,level=logging.DEBUG, format='%(asctime)s:%(levelname)s: %(message)s')
         self.logger = logging.getLogger(log_name)
         self.logger.info('the config of this run are :' + config_NO )
+
 
 
     def set_n_label(self, n_):
