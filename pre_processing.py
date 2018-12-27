@@ -9,6 +9,8 @@ import random
 import json
 import timeit
 import numpy as np
+import subprocess
+import sys
 
 path_train = '../data/CoNLL2003/eng.train'
 path_eval = '../data/CoNLL2003/eng.testa'
@@ -18,7 +20,6 @@ path_test = '../data/CoNLL2003/eng.testb'
 
 
 def initial_2idxs_fasttext(config):
-
 
     start = timeit.default_timer()
     print("Building Fasttext vocab...")
@@ -38,19 +39,53 @@ def initial_2idxs_fasttext(config):
     vocab_token_corpus = [x[0] for x in vocab_token_corpus.most_common()]
     vocab_label = [x[0] for x in vocab_label.most_common()]
     vocab_char = [x[0] for x in vocab_char.most_common()]
+    
+    # build fasttext_embedding with all the OOV
+    result = get_fasttext_embedding(vocab_token_corpus, config.command, config.option,
+                           config.bin_file, config.vocab_file, config.fasttext_embedding_file)
+    if not result :
+        print('fail to intial lookup_table, exit')
+        sys.exit()
+        
+    # 2idx dictionary    
+    token2idx = get_2idx(vocab_token_corpus, config.save_idx, config.file_token_idx)
+    char2idx = get_2idx(vocab_char, config.save_idx, config.file_char_idx)
+    label2idx = get_2idx(vocab_label, config.save_idx, config.file_label_idx)
+       
+    # get embedding lookup table
+    lookup_table = get_embedding_lookup_table(token2idx, config.fasttext_embedding_file, config.dim_word, config.save_table, config.lookup_table_file_path)
 
+    stop = timeit.default_timer()
+    print("vocabulary for this corpus: {} tokens, {} chars, {} labels"
+          .format(len(vocab_token_corpus), len(vocab_char),len(vocab_label)))
+    print('vocabulary construction time: ', stop - start) 
 
+    # update config
+    config.set_n_label(len(vocab_label))
+    config.set_n_word(len(vocab_token_corpus))
+    config.set_n_char(len(vocab_char))
+    config.set_lookup_table(lookup_table)
+    config.set_idx2label(label2idx)
+    config.set_idx2token(token2idx)
+    
+    return token2idx, char2idx, label2idx, lookup_table
 
-    return vocab_token_corpus, vocab_char, vocab_label
-
-def get_fasttext_embedding(vocab_token_corpus, path_bin_file, path_vocab_file, path_fasttext_embedding_file):
+def get_fasttext_embedding(vocab_token_corpus, command, option,
+                           path_bin_file, path_vocab_file, path_fasttext_embedding_file):
     with open(path_vocab_file, 'w+') as vocab_file:
         for i, token in enumerate(vocab_token_corpus):
             vocab_file.write(token)
             if i < len(vocab_token_corpus) - 1:
                 vocab_file.write('\n')
-
-
+    with open(path_vocab_file, 'r') as stdin_file,open(path_fasttext_embedding_file, 'w+') as stdout_file: 
+        result = subprocess.call([command, option, path_bin_file], stdin = stdin_file, stdout = stdout_file)
+    
+    if result == 0:
+        print('fasttext_lookup_table built')
+        return True
+    else:
+        print('fail to build fasttext_lookup_table')
+        return False
 
 
 
@@ -278,6 +313,7 @@ def get_inputs(dataset, token2idx, char2idx, label2idx, config):
             word_idx = token2idx[word]
         else:
             word_idx = token2idx['$UNK$']
+
         
         # label idx
         if label in label2idx:
