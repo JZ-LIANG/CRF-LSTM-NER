@@ -1,7 +1,6 @@
 import logging
 import os
 
-
 class Config():
     """
     Initialize hyperparameters
@@ -13,21 +12,21 @@ class Config():
     # pretrained embedding 
     # dataset
     # vocab 
-    config_NO = ='glove, dropout_rate = 0.9, main_lstm = 300'
 
+    config_NO ='Fasttext_wiki, dropout_rate = (0.5,0.5) main_lstm = 500'
     # embeddings_size
-    dim_word = 100
-    dim_char = 100
+    dim_word = 300
+    dim_char = 50
 
     # model hyperparameters
-    hidden_size_char = 100 # lstm on chars
-    hidden_size_lstm = 300 # lstm on word embeddings
+    hidden_size_char = 150 # lstm on chars
+    hidden_size_lstm = 500 # lstm on word embeddings
 
     # training
     train_embeddings = False
     loss_regularization = False
-    n_epochs          = 5
-    nepoch_no_imprv = 3
+    n_epochs          = 50
+    nepoch_no_imprv = 6
     # if apply regularization of W and b in loss function
     loss_regularization = False
     # regularization rate
@@ -37,10 +36,10 @@ class Config():
     # The probability that each element is kept.
     embed_dropout          = 0.5
     fc__dropout            = 0.8
-    batch_size       = 50
+    batch_size       = 30
     lr_method        = "adam"
     lr               = 0.001
-    lr_decay         = 0.9
+    lr_decay         = 0.85
     clip             = -1 # if negative, no clipping
 
 
@@ -48,13 +47,15 @@ class Config():
     path_train = 'data/CoNLL2003/eng.train'
     path_eval = 'data/CoNLL2003/eng.testa'
     path_test = 'data/CoNLL2003/eng.testb'
-    filename_glove = 'data/glove/glove.6B.100d.txt'
+
+    # fasttext 
+
 
 
     # save model and output
     if_save_model = True
 
-    path_root = 'output/result_glove/'
+    path_root = 'output/result_w2v_test/'
     path_output_train = 'train.txt'
     path_output_test = path_root + 'test.txt'
     path_output_eval = path_root + 'eval.txt'
@@ -63,12 +64,12 @@ class Config():
     path_result_test = path_root + 'test_result.txt'
     path_model =  path_root + 'model/'
     path_log = path_root + 'log.log'
-    log_name = 'glove'
+    log_name = 'w2v_test'
 
 
     # file format
     separator = ' '
-    lowercase = True
+    lowercase = False
 
     # index files
     save_idx = True
@@ -104,7 +105,6 @@ class Config():
         logging.basicConfig(filename= self.path_log, filemode='w+', level=logging.DEBUG, format='%(asctime)s:%(levelname)s: %(message)s')
         self.logger = logging.getLogger(self.log_name)
         self.logger.info('the config of this run are :' + self.config_NO )
-
 
 
 
