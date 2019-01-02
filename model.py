@@ -159,7 +159,8 @@ class Model(object):
 
     def initialize_session(self):
         """Defines self.sess and initialize the variables"""
-        self.logger.info("Initializing tf session")
+
+        self.config.logger.info("Initializing tf session")
         self.sess = tf.Session()
         self.saver  = tf.train.Saver()
         self.sess.run(tf.global_variables_initializer())
@@ -174,9 +175,9 @@ class Model(object):
         # re-load the model
         if path_model != None:
             self.restore_session(path_model)
-            self.logger.info("Model restored.")
+            self.config.logger.info("Model restored.")
         elif self.sess == None and path_model == None:
-            self.logger.info('can not find model, exit')
+            self.config.logger.info('can not find model, exit')
             exit()
 
 
@@ -186,7 +187,7 @@ class Model(object):
         lr = self.config.lr
 
         for epoch in range(self.config.n_epochs):
-            self.logger.info("Epoch {:} out of {:}".format(epoch + 1, self.config.n_epochs))
+            self.config.logger.info("Epoch {:} out of {:}".format(epoch + 1, self.config.n_epochs))
             epoch_start_time = time.time()
 
             # self.config.batch_size
@@ -197,7 +198,7 @@ class Model(object):
                 _, train_loss  = self.sess.run([self.train_op, self.loss], feed_dict=fd)
 
             metrics = self.evaluate(dev_x, dev_y)
-            self.logger.info("Epoch {:} 's F1 ={:}, epoch_runing_time ={:} .".format(epoch + 1, metrics["f1"], (time.time() - epoch_start_time)))
+            self.config.logger.info("Epoch {:} 's F1 ={:}, epoch_runing_time ={:} .".format(epoch + 1, metrics["f1"], (time.time() - epoch_start_time)))
             # if there is more then 1 epoch without improvement, try a small lr
             if (self.config.lr_decay < 1) and (nepoch_no_imprv > 1):
                 lr *= self.config.lr_decay
@@ -207,14 +208,14 @@ class Model(object):
             if metrics["f1"] >= best_F1:
                 nepoch_no_imprv = 0
                 best_F1 = metrics["f1"]
-                self.logger.info("- new best F1, save new model.")
+                self.config.logger.info("- new best F1, save new model.")
                 if self.config.if_save_model:
                     self.save_session()
 
             else:
                 nepoch_no_imprv += 1
                 if nepoch_no_imprv >= self.config.nepoch_no_imprv:
-                    self.logger.info("- early stopping {} epochs without improvement".format(nepoch_no_imprv))
+                    self.config.logger.info("- early stopping {} epochs without improvement".format(nepoch_no_imprv))
                     break
 
 
@@ -309,9 +310,9 @@ class Model(object):
         # check the sess exist
         if path_model != None:
             self.restore_session(path_model)
-            self.logger.info("Model restored.")
+            self.config.logger.info("Model restored.")
         elif self.sess == None and path_model == None:
-            self.logger.info('can not find model, exit')
+            self.config.logger.info('can not find model, exit')
             exit()
             
         row = ''
@@ -341,6 +342,6 @@ class Model(object):
         os.system(shell_command)
         with open(path_result, 'r') as f:
             classification_report = f.read()
-            self.logger.info(classification_report) 
-            self.logger.info()
+            self.config.logger.info(classification_report) 
+            self.config.logger.info()
 
