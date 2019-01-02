@@ -16,7 +16,66 @@ path_train = '../data/CoNLL2003/eng.train'
 path_eval = '../data/CoNLL2003/eng.testa'
 path_test = '../data/CoNLL2003/eng.testb'
 
+def initial_2idxs_word2vec(config, w2v):
 
+    start = timeit.default_timer()
+    print("Building word2vec vocab...")
+    count_token = {} 
+    count_label = {} 
+    count_character = {}
+
+    datasets = [('train',config.path_train), ('eval', config.path_eval), ('test', config.path_test)]
+    for dataset in datasets:
+        count_token[dataset[0]], count_label[dataset[0]], count_character[dataset[0]] = get_vocabs(dataset[1], separator = config.separator, lowercase = config.lowercase)
+
+    vocab_token_corpus = count_token['train'] + count_token['eval'] + count_token['test']
+    vocab_label = count_label['train'] + count_label['eval'] + count_label['test']
+    vocab_char = count_character['train'] + count_character['eval'] + count_character['test']
+
+    # sorted the vocabu by frequency 
+    vocab_token_corpus = [x[0] for x in vocab_token_corpus.most_common()]
+    vocab_label = [x[0] for x in vocab_label.most_common()]
+    vocab_char = [x[0] for x in vocab_char.most_common()]
+
+    # future features: limit the vocabulary by threshold
+    ###############################################
+    # if config.vocabulary_threshold > 1:
+    #     vocab_token_corpus = 
+    ###############################################
+
+    # vocab in pre-trained embedding
+    vocab_w2v = w2v.vocab
+
+    # selected only common vocabs in corpus and pre-trained embedding(like glove)
+    vocab_token_final = [token for token in vocab_token_corpus if token.strip() in vocab_w2v]
+    vocab_token_final = ['$UNK$'] + vocab_token_final
+
+
+    # generate 2idx mapping dict for token, char, label
+    # path = '../data/idx/'
+    # save_idx = True
+    # paths = ['../data/idx/token2idx.json', '../data/idx/label2idx.json', '../data/idx/tag2idx.json']
+
+    token2idx = get_2idx(vocab_token_final, config.save_idx, config.file_token_idx)
+    char2idx = get_2idx(vocab_char, config.save_idx, config.file_char_idx)
+    label2idx = get_2idx(vocab_label, config.save_idx, config.file_label_idx)
+
+    # get embedding lookup table
+    lookup_table = get_embedding_lookup_table_word2vec(token2idx, w2v, config.dim_word, config.save_table, config.lookup_table_file_path)
+
+    stop = timeit.default_timer()
+    print("vocabulary for this corpus: {} tokens, {} chars, {} labels"
+          .format(len(vocab_token_final), len(vocab_char),len(vocab_label)))
+    print('vocabulary construction time: ', stop - start) 
+
+    # update config
+    config.set_n_label(len(vocab_label))
+    config.set_n_word(len(vocab_token_final))
+    config.set_n_char(len(vocab_char))
+    config.set_lookup_table(lookup_table)
+    config.set_idx2label(label2idx)
+    config.set_idx2token(token2idx)
+    return token2idx, char2idx, label2idx, lookup_table
 
 
 def initial_2idxs_fasttext(config):
@@ -200,6 +259,27 @@ def get_glove_vocab(filename):
             vocab.add(word)
     return vocab
 
+def get_embedding_lookup_table_word2vec(vocab, w2v, dim = 300, save_table = False, file_path = None):
+
+    embeddings = np.zeros([len(vocab), dim])
+    for w in list(vocab.keys()):
+        if w in w2v:
+            word_idx = vocab[w]
+            embedding = [float(x) for x in w2v[w]]
+            embeddings[word_idx] = np.asarray(embedding)
+                
+    # save lookup table
+    if save_table:
+        if not os.path.exists(os.path.dirname(file_path)):
+            try:
+                os.makedirs(os.path.dirname(file_path))
+            except OSError as exc: # Guard against race condition
+                if exc.errno != errno.EEXIST:
+                    raise                    
+        with open(file_path, 'w+') as fp:
+            np.savez_compressed(trimmed_filename, embeddings=embeddings)
+            
+    return embeddings
 
 
 def get_embedding_lookup_table(vocab, glove_filename, dim = 100, save_table = False, file_path = None):
@@ -209,8 +289,9 @@ def get_embedding_lookup_table(vocab, glove_filename, dim = 100, save_table = Fa
         for line in f:
             line = line.strip().split(' ')
             word = line[0]
-            embedding = [float(x) for x in line[1:]]
+            embedding = []
             if word in vocab:
+                embedding = [float(x) for x in line[1:]]
                 word_idx = vocab[word]
                 embeddings[word_idx] = np.asarray(embedding)
                 

@@ -1,4 +1,6 @@
 import logging
+import os
+
 
 class Config():
     """
@@ -12,14 +14,14 @@ class Config():
     # dataset
     # vocab 
 
-    config_NO ='Fasttext_wiki, dropout_rate = 0.5, main_lstm = 300'
+    config_NO ='Fasttext_wiki, dropout_rate = (0.8,0.5) main_lstm = 500'
     # embeddings_size
     dim_word = 300
     dim_char = 50
 
     # model hyperparameters
     hidden_size_char = 150 # lstm on chars
-    hidden_size_lstm = 300 # lstm on word embeddings
+    hidden_size_lstm = 500 # lstm on word embeddings
 
     # training
     train_embeddings = False
@@ -33,7 +35,8 @@ class Config():
 
 
     # The probability that each element is kept.
-    dropout          = 0.5
+    embed_dropout          = 0.5
+    fc__dropout            = 0.8
     batch_size       = 30
     lr_method        = "adam"
     lr               = 0.001
@@ -57,14 +60,15 @@ class Config():
     # save model and output
     if_save_model = True
 
-    path_output_train = 'output/result_fastext/train.txt'
-    path_output_test = 'output/result_fastext/test.txt'
-    path_output_eval = 'output/result_fastext/eval.txt'
-    path_result_train = 'output/result_fastext/train_result.txt'
-    path_result_eval = 'output/result_fastext/eval_result.txt'
-    path_result_test = 'output/result_fastext/test_result.txt'
-    path_model =  'output/result_fastext/model/'
-    path_log = 'output/result_fastext/model/log.log'
+    path_root = 'output/result_fastext1/'
+    path_output_train = 'train.txt'
+    path_output_test = path_root + 'test.txt'
+    path_output_eval = path_root + 'eval.txt'
+    path_result_train = path_root + 'train_result.txt'
+    path_result_eval = path_root + 'eval_result.txt'
+    path_result_test = path_root + 'test_result.txt'
+    path_model =  path_root + 'model/'
+    path_log = path_root + 'log.log'
     log_name = 'fasttext1'
 
 
@@ -76,9 +80,10 @@ class Config():
     save_idx = True
     save_table = False
     lookup_table_file_path = None
-    file_token_idx = 'output/idx/token2idx.json'
-    file_char_idx = 'output/idx/char2idx.json'
-    file_label_idx = 'output/idx/tag2idx.json'
+    path_idx = path_root + 'idx/'
+    file_token_idx = path_idx + 'token2idx.json'
+    file_char_idx = path_idx + 'char2idx.json'
+    file_label_idx = path_idx + 'tag2idx.json'
 
 
 
@@ -94,9 +99,18 @@ class Config():
         self.n_word = -1
         self.lookup_table = None
 
-        logging.basicConfig(filename= path_log,level=logging.DEBUG, format='%(asctime)s:%(levelname)s: %(message)s')
-        self.logger = logging.getLogger(log_name)
-        self.logger.info('the config of this run are :' + config_NO )
+
+        if not os.path.exists(self.path_root):
+            os.makedirs(self.path_root)
+
+        if not os.path.exists(self.path_model):
+            os.makedirs(self.path_model)
+        if not os.path.exists(self.path_idx):
+            os.makedirs(self.path_idx )
+
+        logging.basicConfig(filename= self.path_log, filemode='w+', level=logging.DEBUG, format='%(asctime)s:%(levelname)s: %(message)s')
+        self.logger = logging.getLogger(self.log_name)
+        self.logger.info('the config of this run are :' + self.config_NO )
 
 
 
