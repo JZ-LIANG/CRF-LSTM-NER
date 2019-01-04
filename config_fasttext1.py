@@ -1,5 +1,8 @@
 import logging
 import os
+import numpy as np
+import pickle
+
 
 
 class Config():
@@ -154,7 +157,7 @@ class Config():
                 self.token2idx = pickle.load(f)
                 self.char2idx = pickle.load(f)
                 self.label2idx = pickle.load(f)
-                self.idx2label = pickle.load(f)
+                self.isdx2label = pickle.load(f)
                 self.idx2token = pickle.load(f)
 
         except IOError:
