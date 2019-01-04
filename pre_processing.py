@@ -80,8 +80,8 @@ def initial_2idxs_word2vec(config, w2v):
     if config.save_idx :
         with open(config.indx_config, 'wb') as f:
             pickle.dump(len(vocab_label), f)
-            pickle.dump(len(vocab_token_final), f)
             pickle.dump(len(vocab_char), f)
+            pickle.dump(len(vocab_token_final), f)
             pickle.dump(token2idx, f)
             pickle.dump(char2idx, f)
             pickle.dump(label2idx, f)
@@ -145,8 +145,8 @@ def initial_2idxs_fasttext(config):
     if config.save_idx :
         with open(config.indx_config, 'wb') as f:
             pickle.dump(len(vocab_label), f)
-            pickle.dump(len(vocab_token_final), f)
             pickle.dump(len(vocab_char), f)
+            pickle.dump(len(vocab_token_final), f)
             pickle.dump(token2idx, f)
             pickle.dump(char2idx, f)
             pickle.dump(label2idx, f)
@@ -242,15 +242,15 @@ def initial_2idxs(config):
     if config.save_idx :
         with open(config.indx_config, 'wb') as f:
             pickle.dump(len(vocab_label), f)
-            pickle.dump(len(vocab_token_final), f)
             pickle.dump(len(vocab_char), f)
+            pickle.dump(len(vocab_token_final), f)
             pickle.dump(token2idx, f)
             pickle.dump(char2idx, f)
             pickle.dump(label2idx, f)
             pickle.dump(config.idx2label, f)
             pickle.dump(config.idx2token, f)
 
-    return token2idx, char2idx, label2idx, lookup_table
+    return token2idx, char2idx, label2idx, lookup_tables
 
 def get_vocabs(filepath, separator = ' ', lowercase = True):
     
