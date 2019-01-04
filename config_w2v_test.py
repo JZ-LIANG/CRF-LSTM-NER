@@ -1,5 +1,6 @@
 import logging
 import os
+import numpy as np
 
 class Config():
     """
@@ -73,12 +74,14 @@ class Config():
 
     # index files
     save_idx = True
-    save_table = False
-    lookup_table_file_path = None
+    save_table = True
+    lookup_table_file_path = path_root + 'lookup_table.npz'
     path_idx = path_root + 'idx/'
     file_token_idx = path_idx + 'token2idx.json'
     file_char_idx = path_idx + 'char2idx.json'
     file_label_idx = path_idx + 'tag2idx.json'
+    # file to save the indx_config
+    indx_config = path_idx + 'indx_config.pkl'
 
 
 
@@ -121,6 +124,37 @@ class Config():
         self.idx2label = {v: k for k, v in label2idx.items()}
     def set_idx2token(self, token2idx):
         self.idx2token = {v: k for k, v in token2idx.items()}
+
+
+    def load_lookup_table(self, file =None):
+        if file == None:
+            file = self.lookup_table_file_path
+
+        try:
+            with np.load(file) as data:
+                self.lookup_table = data["lookup_table"]
+
+        except IOError:
+            raise MyIOError(file)
+
+    def load_indx(self, file =None):
+        if file == None:
+            file = self.indx_config
+
+        try:
+            with open(file, 'rb') as f:
+                self.n_label = pickle.load(f)
+                self.n_char = pickle.load(f)
+                self.n_word = pickle.load(f)
+                self.token2idx = pickle.load(f)
+                self.char2idx = pickle.load(f)
+                self.label2idx = pickle.load(f)
+                self.idx2label = pickle.load(f)
+                self.idx2token = pickle.load(f)
+
+        except IOError:
+            raise MyIOError(file)
+
 
 
 

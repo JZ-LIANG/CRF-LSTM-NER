@@ -75,6 +75,20 @@ def initial_2idxs_word2vec(config, w2v):
     config.set_lookup_table(lookup_table)
     config.set_idx2label(label2idx)
     config.set_idx2token(token2idx)
+
+        # save index version
+    if config.save_idx :
+        with open(config.indx_config, 'wb') as f:
+            pickle.dump(len(vocab_label), f)
+            pickle.dump(len(vocab_token_final), f)
+            pickle.dump(len(vocab_char), f)
+            pickle.dump(token2idx, f)
+            pickle.dump(char2idx, f)
+            pickle.dump(label2idx, f)
+            pickle.dump(config.idx2label, f)
+            pickle.dump(config.idx2token, f)
+
+
     return token2idx, char2idx, label2idx, lookup_table
 
 
@@ -126,6 +140,18 @@ def initial_2idxs_fasttext(config):
     config.set_lookup_table(lookup_table)
     config.set_idx2label(label2idx)
     config.set_idx2token(token2idx)
+
+    # save index version
+    if config.save_idx :
+        with open(config.indx_config, 'wb') as f:
+            pickle.dump(len(vocab_label), f)
+            pickle.dump(len(vocab_token_final), f)
+            pickle.dump(len(vocab_char), f)
+            pickle.dump(token2idx, f)
+            pickle.dump(char2idx, f)
+            pickle.dump(label2idx, f)
+            pickle.dump(config.idx2label, f)
+            pickle.dump(config.idx2token, f)
     
     return token2idx, char2idx, label2idx, lookup_table
 
@@ -211,6 +237,19 @@ def initial_2idxs(config):
     config.set_lookup_table(lookup_table)
     config.set_idx2label(label2idx)
     config.set_idx2token(token2idx)
+
+    # save index version
+    if config.save_idx :
+        with open(config.indx_config, 'wb') as f:
+            pickle.dump(len(vocab_label), f)
+            pickle.dump(len(vocab_token_final), f)
+            pickle.dump(len(vocab_char), f)
+            pickle.dump(token2idx, f)
+            pickle.dump(char2idx, f)
+            pickle.dump(label2idx, f)
+            pickle.dump(config.idx2label, f)
+            pickle.dump(config.idx2token, f)
+
     return token2idx, char2idx, label2idx, lookup_table
 
 def get_vocabs(filepath, separator = ' ', lowercase = True):
@@ -261,12 +300,12 @@ def get_glove_vocab(filename):
 
 def get_embedding_lookup_table_word2vec(vocab, w2v, dim = 300, save_table = False, file_path = None):
 
-    embeddings = np.zeros([len(vocab), dim])
+    lookup_table = np.zeros([len(vocab), dim])
     for w in list(vocab.keys()):
         if w in w2v:
             word_idx = vocab[w]
             embedding = [float(x) for x in w2v[w]]
-            embeddings[word_idx] = np.asarray(embedding)
+            lookup_table[word_idx] = np.asarray(embedding)
                 
     # save lookup table
     if save_table:
@@ -277,14 +316,14 @@ def get_embedding_lookup_table_word2vec(vocab, w2v, dim = 300, save_table = Fals
                 if exc.errno != errno.EEXIST:
                     raise                    
         with open(file_path, 'w+') as fp:
-            np.savez_compressed(trimmed_filename, embeddings=embeddings)
+            np.savez_compressed(file_path, lookup_table=lookup_table)
             
-    return embeddings
+    return lookup_table
 
 
 def get_embedding_lookup_table(vocab, glove_filename, dim = 100, save_table = False, file_path = None):
 
-    embeddings = np.zeros([len(vocab), dim])
+    lookup_table = np.zeros([len(vocab), dim])
     with open(glove_filename) as f:
         for line in f:
             line = line.strip().split(' ')
@@ -293,7 +332,7 @@ def get_embedding_lookup_table(vocab, glove_filename, dim = 100, save_table = Fa
             if word in vocab:
                 embedding = [float(x) for x in line[1:]]
                 word_idx = vocab[word]
-                embeddings[word_idx] = np.asarray(embedding)
+                lookup_table[word_idx] = np.asarray(embedding)
                 
     # save lookup table
     if save_table:
@@ -304,9 +343,9 @@ def get_embedding_lookup_table(vocab, glove_filename, dim = 100, save_table = Fa
                 if exc.errno != errno.EEXIST:
                     raise                    
         with open(file_path, 'w+') as fp:
-            np.savez_compressed(trimmed_filename, embeddings=embeddings)
+            np.savez_compressed(file_path, lookup_table=lookup_table)
             
-    return embeddings
+    return lookup_table
 
 
 
