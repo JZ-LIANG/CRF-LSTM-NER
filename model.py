@@ -277,10 +277,12 @@ class Model(object):
         """Saves session = weights"""
         if not os.path.exists(self.config.path_model):
             os.makedirs(self.config.path_model)
-        self.saver.save(self.sess, self.config.path_model)
+        model = self.config.path_model + 'model.ckpt'
+        self.saver.save(self.sess, model)
         
     def restore_session(self, path_model):
-        self.saver.restore(self.sess, path_model)
+        model = path_model + 'model.ckpt'
+        self.saver.restore(self.sess, model)
         
     def close(self):
         self.sess.close()
@@ -343,5 +345,5 @@ class Model(object):
         with open(path_result, 'r') as f:
             classification_report = f.read()
             self.config.logger.info(classification_report) 
-            self.config.logger.info()
+            
 
