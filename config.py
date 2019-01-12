@@ -1,5 +1,6 @@
 import logging
 import os
+import numpy as np
 
 
 class Config():
@@ -35,8 +36,8 @@ class Config():
 
 
     # The probability that each element is kept.
-    embed_dropout          = 0.5
-    fc__dropout            = 0.8
+    dropout_embed          = 0.5
+    dropout_fc            = 0.8
     batch_size       = 50
     lr_method        = "adam"
     lr               = 0.001
