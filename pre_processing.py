@@ -120,19 +120,19 @@ def initial_2idxs_flair(config):
     ###############################################
 
 
-    token2idx = get_2idx(vocab_token_final, config.save_idx, config.file_token_idx)
+    token2idx = get_2idx(vocab_token_corpus, config.save_idx, config.file_token_idx)
     char2idx = get_2idx(vocab_char, config.save_idx, config.file_char_idx)
     label2idx = get_2idx(vocab_label, config.save_idx, config.file_label_idx)
 
    
     stop = timeit.default_timer()
-    print("vocabulary for this corpus: {} tokens, {} chars, {} labels"
-          .format(len(vocab_token_final), len(vocab_char),len(vocab_label)))
+    print("vocabulary for this corpus: {} chars, {} labels"
+          .format( len(vocab_char),len(vocab_label)))
     print('vocabulary construction time: ', stop - start) 
 
     # update config
     config.set_n_label(len(vocab_label))
-    config.set_n_word(len(vocab_token_final))
+    config.set_n_word(len(vocab_token_corpus))
     config.set_n_char(len(vocab_char))
     # config.set_lookup_table(lookup_table)
     config.set_idx2label(label2idx)
@@ -143,7 +143,7 @@ def initial_2idxs_flair(config):
         with open(config.indx_config, 'wb') as f:
             pickle.dump(len(vocab_label), f)
             pickle.dump(len(vocab_char), f)
-            pickle.dump(len(vocab_token_final), f)
+            pickle.dump(len(vocab_token_corpus), f)
             pickle.dump(token2idx, f)
             pickle.dump(char2idx, f)
             pickle.dump(label2idx, f)
