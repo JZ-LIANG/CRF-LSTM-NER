@@ -92,6 +92,70 @@ def initial_2idxs_word2vec(config, w2v):
     return token2idx, char2idx, label2idx, lookup_table
 
 
+def initial_2idxs_flair(config):
+
+    start = timeit.default_timer()
+    print("Building word2vec vocab...")
+    count_token = {} 
+    count_label = {} 
+    count_character = {}
+
+    datasets = [('train',config.path_train), ('eval', config.path_eval), ('test', config.path_test)]
+    for dataset in datasets:
+        count_token[dataset[0]], count_label[dataset[0]], count_character[dataset[0]] = get_vocabs(dataset[1], separator = config.separator, lowercase = config.lowercase)
+
+    vocab_token_corpus = count_token['train'] + count_token['eval'] + count_token['test']
+    vocab_label = count_label['train'] + count_label['eval'] + count_label['test']
+    vocab_char = count_character['train'] + count_character['eval'] + count_character['test']
+
+    # sorted the vocabu by frequency 
+    vocab_token_corpus = [x[0] for x in vocab_token_corpus.most_common()]
+    vocab_label = [x[0] for x in vocab_label.most_common()]
+    vocab_char = [x[0] for x in vocab_char.most_common()]
+
+    # future features: limit the vocabulary by threshold
+    ###############################################
+    # if config.vocabulary_threshold > 1:
+    #     vocab_token_corpus = 
+    ###############################################
+
+
+    token2idx = get_2idx(vocab_token_final, config.save_idx, config.file_token_idx)
+    char2idx = get_2idx(vocab_char, config.save_idx, config.file_char_idx)
+    label2idx = get_2idx(vocab_label, config.save_idx, config.file_label_idx)
+
+   
+    stop = timeit.default_timer()
+    print("vocabulary for this corpus: {} tokens, {} chars, {} labels"
+          .format(len(vocab_token_final), len(vocab_char),len(vocab_label)))
+    print('vocabulary construction time: ', stop - start) 
+
+    # update config
+    config.set_n_label(len(vocab_label))
+    config.set_n_word(len(vocab_token_final))
+    config.set_n_char(len(vocab_char))
+    # config.set_lookup_table(lookup_table)
+    config.set_idx2label(label2idx)
+    config.set_idx2token(token2idx)
+
+        # save index version
+    if config.save_idx :
+        with open(config.indx_config, 'wb') as f:
+            pickle.dump(len(vocab_label), f)
+            pickle.dump(len(vocab_char), f)
+            pickle.dump(len(vocab_token_final), f)
+            pickle.dump(token2idx, f)
+            pickle.dump(char2idx, f)
+            pickle.dump(label2idx, f)
+            pickle.dump(config.idx2label, f)
+            pickle.dump(config.idx2token, f)
+
+
+    return token2idx, char2idx, label2idx
+
+
+
+
 def initial_2idxs_fasttext(config):
 
     start = timeit.default_timer()
