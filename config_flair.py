@@ -14,7 +14,7 @@ class Config():
     # pretrained embedding 
     # dataset
     # vocab 
-    config_NO = ='glove, dropout_rate = 0.9, main_lstm = 300'
+    config_NO = ='flair, dropout_rate = (0.5,0.8), main_lstm = 300'
 
     # embeddings_size
     dim_word = 100
@@ -46,16 +46,17 @@ class Config():
 
 
     # dataset files
-    path_train = 'data/CoNLL2003/eng.train'
-    path_eval = 'data/CoNLL2003/eng.testa'
-    path_test = 'data/CoNLL2003/eng.testb'
-    filename_glove = 'data/glove/glove.6B.100d.txt'
+    dataset_root = '/home/semantic/Liang_NER/data/corpus/conll_03/'
+    path_train = dataset_root + 'eng.train'
+    path_eval = dataset_root + 'eng.testa'
+    path_test = dataset_root + 'eng.testb'
+
 
 
     # save model and output
     if_save_model = True
 
-    path_root = 'output/result_glove/'
+    path_root = '/home/semantic/Liang_NER/output/result_flair/'
     path_output_train = 'train.txt'
     path_output_test = path_root + 'test.txt'
     path_output_eval = path_root + 'eval.txt'
@@ -64,7 +65,7 @@ class Config():
     path_result_test = path_root + 'test_result.txt'
     path_model =  path_root + 'model/'
     path_log = path_root + 'log.log'
-    log_name = 'glove'
+    log_name = 'flair'
 
 
     # file format
