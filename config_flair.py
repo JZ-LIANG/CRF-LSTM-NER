@@ -14,7 +14,7 @@ class Config():
     # pretrained embedding 
     # dataset
     # vocab 
-    config_NO = ='flair, dropout_rate = (0.5,0.8), main_lstm = 300'
+    config_NO ='flair, dropout_rate = (0.5,0.8), main_lstm = 300'
 
     # embeddings_size
     dim_word = 100
