@@ -14,7 +14,7 @@ class Config():
     # pretrained embedding 
     # dataset
     # vocab 
-    config_NO ='flair, dropout_rate = (0.5,0.8), main_lstm = 300'
+    config_NO ='flair, dropout_rate = (0.5,0.8), main_lstm = 500'
 
     # embeddings_size
     dim_word = 100
@@ -22,13 +22,13 @@ class Config():
 
     # model hyperparameters
     hidden_size_char = 100 # lstm on chars
-    hidden_size_lstm = 300 # lstm on word embeddings
+    hidden_size_lstm = 500 # lstm on word embeddings
 
     # training
     train_embeddings = False
     loss_regularization = False
-    n_epochs          = 50
-    nepoch_no_imprv = 6
+    n_epochs          = 5
+    nepoch_no_imprv = 3
     # if apply regularization of W and b in loss function
     loss_regularization = False
     # regularization rate
@@ -56,7 +56,7 @@ class Config():
     # save model and output
     if_save_model = True
 
-    path_root = '/home/semantic/Liang_NER/output/result_flair1/'
+    path_root = '/home/semantic/Liang_NER/output/result_flair2/'
     path_output_train = 'train.txt'
     path_output_test = path_root + 'test.txt'
     path_output_eval = path_root + 'eval.txt'
