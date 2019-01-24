@@ -105,7 +105,7 @@ class Config():
         if not os.path.exists(self.path_idx):
             os.makedirs(self.path_idx )
 
-        handlers = [logging.FileHandler(self.path_log), logging.StreamHandler()]
+        handlers = [logging.FileHandler(filename = self.path_log, mode='w+'), logging.StreamHandler()]
         logging.basicConfig(handlers = handlers, level=logging.DEBUG, format='%(asctime)s:%(levelname)s: %(message)s')
         self.logger = logging.getLogger(self.log_name)
         self.logger.info('the config of this run are :' + self.config_NO )
