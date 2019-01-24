@@ -126,6 +126,8 @@ class Config():
         self.idx2label = {v: k for k, v in label2idx.items()}
     def set_idx2token(self, token2idx):
         self.idx2token = {v: k for k, v in token2idx.items()}
+    def set_idx2token_flair(self, token2idx):
+        self.idx2token = {tuple1[1]: tuple1[0] for tuple1 in token2idx}
 
 
 

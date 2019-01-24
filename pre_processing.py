@@ -153,7 +153,69 @@ def initial_2idxs_flair(config):
 
     return token2idx, char2idx, label2idx
 
+def get_inputs_flair(corpus,stacked_embeddings, offset, lookup_table,token2idx, char2idx, label2idx):
+    
+    # collection per sentence
+    # format [[[char_idxs], word_idx], ...]
+    sentence_token = []
+    # format [[label], ...]
+    sentence_label = []
+    
+    # format [[sentence1_token], [sentence2_token], ...]
+    tokens = []
+    # format [[sentence1_label], [sentence2_label], ...]
+    labels = []
+    
+    
+    # the offset between training, dev, test
+    word_idx_count = offset
+    # token2idx dict
 
+    # go throught whole CoNLL file
+    for sentence in corpus:
+        stacked_embeddings.embed(sentence)
+        for token_obj in sentence:
+            token = token_obj.text
+            label = token_obj.get_tag('ner11').value
+            
+            # old algorithms
+            # char idxs
+            char_idxs = []
+            for char in token:
+                if char in char2idx:
+                    char_idxs += [char2idx[char]]  
+                else:
+                    print("encounter UNK char:", char)
+
+            # word idx
+            word_idx = word_idx_count
+            word_idx_count += 1   
+            
+            # label idx
+            if label in label2idx:
+                label_idx = label2idx[label]
+            else:
+                print("encounter UNK label:", label)
+
+            # append token inside one sentence
+            sentence_token.append((char_idxs, word_idx))
+            sentence_label.append(label_idx)
+            
+            # new part: token_dict, lookup table
+            token2idx.append((token, word_idx_count - 1))
+            lookup_table[word_idx] = np.asarray(token_obj.embedding)
+            
+            
+            
+        # append each sentence
+        tokens.append(sentence_token)
+        labels.append(sentence_label)
+        sentence_label = []
+        sentence_token = []
+            
+            
+    
+    return tokens, labels,  word_idx_count
 
 
 def initial_2idxs_fasttext(config):
