@@ -81,12 +81,12 @@ class Model(object):
             self.dropout_fc = tf.placeholder(dtype=tf.float32, shape=[], name="dropout_fc")
 
             # embedding lookup table
-            self._word_embeddings_lookup_table = tf.placeholder(dtype=tf.float32, shape=[], name="_word_embeddings_lookup_table")
+            self._word_embeddings_lookup_table = tf.placeholder(dtype=tf.float32, shape=[None, None], name="_word_embeddings_lookup_table")
 
 
 
 
-        # with tf.variable_scope("pretrained_embedding"): 
+        with tf.variable_scope("pretrained_embedding"): 
         #     _word_embeddings_lookup_table = tf.Variable(self.config.lookup_table, 
         #         name = "_word_embeddings_lookup_table", dtype = tf.float32, trainable = False)
 
