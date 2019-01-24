@@ -90,7 +90,7 @@ class Model(object):
         #     _word_embeddings_lookup_table = tf.Variable(self.config.lookup_table, 
         #         name = "_word_embeddings_lookup_table", dtype = tf.float32, trainable = False)
 
-            word_embeddings = tf.nn.embedding_lookup(_word_embeddings_lookup_table, self.word_ids, name="word_embeddings")
+            word_embeddings = tf.nn.embedding_lookup(self._word_embeddings_lookup_table, self.word_ids, name="word_embeddings")
 
 
         with tf.variable_scope("character_embedding"):
