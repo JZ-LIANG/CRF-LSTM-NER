@@ -107,14 +107,15 @@ class Config():
 
 
         # loggging
-        logger = logging.getLogger(self.log_name)
-        logger.setLevel(logging.DEBUG)
-        logging.basicConfig(format='%(message)s', level=logging.DEBUG)
-        handler = [logging.FileHandler(filename = self.path_log), logging.StreamHandler()]
-        handler.setLevel(logging.DEBUG)
-        handler.setFormatter(logging.Formatter(
-                '%(asctime)s:%(levelname)s: %(message)s'))
-        logging.getLogger().addHandler(handler)
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s:%(levelname)s: %(message)s',
+            handlers=[
+                logging.FileHandler(self.path_log),
+                logging.StreamHandler()
+            ])
+        logger = logging.getLogger()
+        logger.info('the config of this run are :' + self.config_NO)
 
         # logger.info('the config of this run are :' + self.config_NO)
 
