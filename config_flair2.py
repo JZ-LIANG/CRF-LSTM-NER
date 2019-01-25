@@ -106,11 +106,23 @@ class Config():
             os.makedirs(self.path_idx )
 
         # loggging
-        handlers=[logging.FileHandler(self.path_log),logging.StreamHandler(sys.stdout)]
-        logging.basicConfig(handlers=handlers, level=logging.DEBUG, format='%(asctime)s:%(levelname)s: %(message)s')
-        self.logger = logging.getLogger(self.log_name)
-        self.logger.info('the config of this run are :' + self.config_NO )
+        self.logger = logging.getLogger('logger')
+        self.logger.setLevel(logging.DEBUG)
+        # create file handler which logs even debug messages
+        fh = logging.FileHandler(self.path_log)
+        fh.setLevel(logging.DEBUG)
+        # create console handler with a higher log level
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.DEBUG)
+        # create formatter and add it to the handlers
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        fh.setFormatter(formatter)
+        ch.setFormatter(formatter)
+        # add the handlers to the logger
+        self.logger.addHandler(fh)
+        self.logger.addHandler(ch)
 
+        self.logger.info('the config of this run are :' + self.config_NO )
 
 
 
