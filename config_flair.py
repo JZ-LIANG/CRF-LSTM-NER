@@ -1,7 +1,7 @@
 import logging
 import os
 import numpy as np
-
+import sys
 
 class Config():
     """
@@ -107,15 +107,10 @@ class Config():
 
 
         # loggging
-        logging.basicConfig(
-            level=logging.INFO,
-            format='%(asctime)s:%(levelname)s: %(message)s',
-            handlers=[
-                logging.FileHandler(self.path_log),
-                logging.StreamHandler()
-            ])
-        logger = logging.getLogger()
-        logger.info('the config of this run are :' + self.config_NO)
+        handlers=[logging.FileHandler(self.path_log),logging.StreamHandler(sys.stdout)]
+        logging.basicConfig(handlers=handlers, level=logging.DEBUG, format='%(asctime)s:%(levelname)s: %(message)s')
+        self.logger = logging.getLogger(self.log_name)
+        self.logger.info('the config of this run are :' + self.config_NO )
 
 
         # handlers = [logging.FileHandler(filename = self.path_log, mode='w+'), logging.StreamHandler()]
