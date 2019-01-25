@@ -34,8 +34,8 @@ class Config():
     # training
     train_embeddings = False
     loss_regularization = False
-    n_epochs          = 50
-    nepoch_no_imprv = 6
+    n_epochs          = 30
+    nepoch_no_imprv = 5
     # if apply regularization of W and b in loss function
     loss_regularization = False
     # regularization rate
