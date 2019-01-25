@@ -108,7 +108,7 @@ class Config():
 
         # loggging
         self.logger = logging.getLogger('logger')
-        # self.logger.setLevel(logging.DEBUG)
+        self.logger.setLevel(logging.DEBUG)
         # create file handler which logs even debug messages
         fh = logging.FileHandler(self.path_log)
         fh.setLevel(logging.DEBUG)
@@ -121,7 +121,7 @@ class Config():
         ch.setFormatter(formatter)
         # add the handlers to the logger
         self.logger.addHandler(fh)
-        self.logger.addHandler(ch)
+        # self.logger.addHandler(ch)
 
         self.logger.info('the config of this run are :' + self.config_NO )
 
