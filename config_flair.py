@@ -108,7 +108,7 @@ class Config():
 
         # loggging
         self.logger = logging.getLogger('logger')
-        self.logger.setLevel(logging.DEBUG)
+        # self.logger.setLevel(logging.DEBUG)
         # create file handler which logs even debug messages
         fh = logging.FileHandler(self.path_log)
         fh.setLevel(logging.DEBUG)
