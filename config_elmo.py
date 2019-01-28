@@ -14,7 +14,7 @@ class Config():
     # pretrained embedding 
     # dataset
     # vocab 
-    config_NO ='flair, dropout_rate = (0.5,0.8), main_lstm = 500'
+    config_NO ='elmo, dropout_rate = (0.5,0.8), main_lstm = 300'
 
     # embeddings_size
     dim_word = 100
@@ -22,7 +22,7 @@ class Config():
 
     # model hyperparameters
     hidden_size_char = 100 # lstm on chars
-    hidden_size_lstm = 500 # lstm on word embeddings
+    hidden_size_lstm = 300 # lstm on word embeddings
 
     # training
     train_embeddings = False
@@ -36,7 +36,7 @@ class Config():
 
 
     # The probability that each element is kept.
-    dropout_embed          = 0.8
+    dropout_embed          = 0.5
     dropout_fc            = 0.8
     batch_size       = 50
     lr_method        = "adam"
@@ -56,7 +56,7 @@ class Config():
     # save model and output
     if_save_model = True
 
-    path_root = '/home/semantic/Liang_NER/output/result_flair2/'
+    path_root = '/home/semantic/Liang_NER/output/result_elmo/'
     path_output_train = 'train.txt'
     path_output_test = path_root + 'test.txt'
     path_output_eval = path_root + 'eval.txt'
@@ -105,6 +105,7 @@ class Config():
         if not os.path.exists(self.path_idx):
             os.makedirs(self.path_idx )
 
+
         # loggging
         self.logger = logging.getLogger('logger')
         self.logger.setLevel(logging.DEBUG)
@@ -123,6 +124,12 @@ class Config():
         # self.logger.addHandler(ch)
 
         self.logger.info('the config of this run are :' + self.config_NO )
+
+
+        # handlers = [logging.FileHandler(filename = self.path_log, mode='w+'), logging.StreamHandler()]
+        # logging.basicConfig(handlers = handlers, level=logging.DEBUG, format='%(asctime)s:%(levelname)s: %(message)s')
+        # self.logger = logging.getLogger(self.log_name)
+        # self.logger.info('the config of this run are :' + self.config_NO )
 
 
 
