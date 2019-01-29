@@ -83,7 +83,7 @@ class Model(object):
             # embedding lookup table
             # more generate use the commented one and adjust lookup_table_d0 in config file accordingly
             # self._word_embeddings_lookup_table = tf.placeholder(dtype=tf.float32, shape=[config.lookup_table_d0, config.lookup_table_d1], name="_word_embeddings_lookup_table")
-            self._word_embeddings_lookup_table = tf.placeholder(dtype=tf.float32, shape=[301418, 3372], name="_word_embeddings_lookup_table")
+            self._word_embeddings_lookup_table = tf.placeholder(dtype=tf.float32, shape=[301418, 7168], name="_word_embeddings_lookup_table")
 
 
 

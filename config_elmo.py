@@ -14,7 +14,7 @@ class Config():
     # pretrained embedding 
     # dataset
     # vocab 
-    config_NO ='elmo, dropout_rate = (0.5,0.8), main_lstm = 300'
+    config_NO ='elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300'
 
     # embeddings_size
     dim_word = 100
@@ -56,7 +56,7 @@ class Config():
     # save model and output
     if_save_model = True
 
-    path_root = '/home/semantic/Liang_NER/output/result_elmo/'
+    path_root = '/home/semantic/Liang_NER/output/result_elmo_flair/'
     path_output_train = 'train.txt'
     path_output_test = path_root + 'test.txt'
     path_output_eval = path_root + 'eval.txt'
