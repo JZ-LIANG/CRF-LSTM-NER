@@ -1,15 +1,16 @@
 # CRF-LSTM-NER
-A CRF-BiLSTM model to benchmark the performances of different word embeddings on your own corpus. <br>
+A CRF-BiLSTM model to benchmark the performances of different word embeddings for a given corpus. <br>
 
 the objectives of this model are:
-*  Build a CRF-BiLSTM  Network in Tensorflow with methods for easisly switching among different word embeddings (word2vec, glove, fasttext, elmo, flair and any combinations of them) while keep the same CRF-LSTM Network  unchanged.
+*  Build a CRF-BiLSTM  Network in Tensorflow with methods for easisly switching among different word embeddings (**Word2vec**, **GloVe**, **Fasttext**, **ELMo**, **Flair** and any combinations of them) while keep the same CRF-LSTM Network unchanged.
+
 * Methods for easily gridsearch on the suitable parameters.
 
 
 
 ## Requirements
 
-Python 3, TensorFlow 1.0+, gensim, and Flair(optinal):
+Python 3, TensorFlow 1.0+, Gensim, and Flair(optinal):
 
 - if need to use "Contextual" embedding, Flair library(https://github.com/zalandoresearch/flair) is required. 
 
@@ -30,10 +31,9 @@ Python 3, TensorFlow 1.0+, gensim, and Flair(optinal):
     path_train = path_data_root +'eng.testa'
     path_eval = path_data_root +'eng.testa'
     path_test = path_data_root +'eng.testb'
-
 ```
 
-2. Designate the embedding you want. Since different embeddings come with different file formats, this part maybe vary slightly accordding to the embedding you choose. there is a example for them in "[How To Use.ipynb](https://github.com/JZ-LIANG/CRF-LSTM-NER/blob/master/Example.ipynb)"
+2. Designate the embedding you want. Since different embeddings come with different file formats, this part maybe vary slightly accordding to the embedding you choose. there is a example for them in "[How To Use.ipynb](https://github.com/JZ-LIANG/CRF-LSTM-NER/blob/master/How%20To%20Use.ipynb)"
 
 ```
     # glove
@@ -46,7 +46,6 @@ Python 3, TensorFlow 1.0+, gensim, and Flair(optinal):
 	command ='../fastText/fasttext'
 	bin_file ='../fastText/data/cc.en.300.bin'
 	config.init_fasttext(command, bin_file)
-
 ```
 
 3. Parse the corpus and generate the "index" and "input". the following code will base on the vocabularies of embedding and corpus to generate the index for token/character/label and the mapping the each sentence into a sequence of index. this part also handle the sepcific configuration of model base on the corpus, like the number of kind of label, the number of unique character in corpus.
@@ -57,7 +56,6 @@ token2idx, char2idx, label2idx, lookup_table = get_idx(config)
 train_x, train_y = get_inputs('train', token2idx, char2idx, label2idx, config)
 eval_x, eval_y = get_inputs('eval', token2idx, char2idx, label2idx, config)
 test_x, test_y = get_inputs('test', token2idx, char2idx, label2idx, config)
-
 ```
 
 4. initial the model's graph and train/eval/test.
@@ -66,12 +64,11 @@ test_x, test_y = get_inputs('test', token2idx, char2idx, label2idx, config)
 ner_model = Model(config)
 ner_model.build_graph()
 ner_model.initialize_session()
-
 ```
 
 5. resutl: the F1 score based on the label will be print and detail of training processing can be find in "./output/log.log". 
 
-you could find more detail in "[How To Use.ipynb](https://github.com/JZ-LIANG/CRF-LSTM-NER/blob/master/Example.ipynb)"
+you could find more detail in "[How To Use.ipynb](https://github.com/JZ-LIANG/CRF-LSTM-NER/blob/master/How%20To%20Use.ipynb)"
 
 
 
