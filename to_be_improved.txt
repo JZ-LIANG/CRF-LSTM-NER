@@ -1,0 +1,23 @@
+1. dropout rate
+2. zip(* word, charcater, label)
+3. combine padding, next_batch, shuffle
+4.change name self.word_ids
+4.test w + b regularization
+5.nepoch_no_imprv
+7.tensorboard
+
+
+8. model: train, load train, only load for predict
+9.save model maybe need to save idx2 2idx and more
+
+dropout:
+The probability that each element is kept.
+	where
+		final embedding
+		before fully connected
+
+
+7.tensorflow print
+8.test training reload
+
+

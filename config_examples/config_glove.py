@@ -25,7 +25,7 @@ class Config():
     dim_char = 50
 
     # model hyperparameters
-    hidden_size_char = 100 # lstm on chars
+    hidden_size_char = 64 # lstm on chars
     hidden_size_lstm = 128 # lstm on word embeddings
 
     # training
@@ -40,13 +40,13 @@ class Config():
 
 
     # The probability that each element is kept.
-    dropout_embed          = 0.5
-    dropout_fc            = 0.8
-    batch_size       = 50
-    lr_method        = "adam"
-    lr               = 0.001
-    lr_decay         = 0.9
-    clip             = -1 # if negative, no clipping
+    dropout_embed  = 0.5
+    dropout_fc     = 0.8
+    batch_size     = 50
+    lr_method      = "adam"
+    lr             = 0.001
+    lr_decay       = 0.9
+    clip           = -1 # if negative, no clipping
 
 
     # contextual embedding lookup table size
@@ -231,8 +231,7 @@ class Config():
         self.path_result_eval = save_path + 'eval_result.txt'
         self.path_result_test = save_path + 'test_result.txt'
         self.path_model =  save_path + 'model/'
-        self.path_log = save_path + 'log.log'
-        
+        self.path_log = save_path
         if not os.path.exists(self.save_path):
             os.makedirs(self.save_path)
         if not os.path.exists(self.path_model):
@@ -255,9 +254,9 @@ class Config():
             handler.setFormatter(formatter)
             logger.addHandler(handler)
             # console
-            ch = logging.StreamHandler(sys.stdout)
-            ch.setLevel(logging.DEBUG)
-            ch.setFormatter(formatter)
-            logger.addHandler(ch)
+            # ch = logging.StreamHandler(sys.stdout)
+            # ch.setLevel(logging.DEBUG)
+            # ch.setFormatter(formatter)
+            # logger.addHandler(ch)
 
             return logger

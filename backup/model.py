@@ -77,20 +77,14 @@ class Model(object):
 
             # learning rate & dropout_rate
             self.lr = tf.placeholder(dtype=tf.float32, shape=[], name="lr")
-            self.dropout_embed = tf.placeholder(dtype=tf.float32, shape=[], name="dropout_embed")
-            self.dropout_fc = tf.placeholder(dtype=tf.float32, shape=[], name="dropout_fc")
-
-            # embedding lookup table
-            self._word_embeddings_lookup_table = tf.placeholder(dtype=tf.float32, shape=[301418, 2148], name="_word_embeddings_lookup_table")
-
-
+            self.dropout_rate = tf.placeholder(dtype=tf.float32, shape=[], name="dropout_rate")
 
 
         with tf.variable_scope("pretrained_embedding"): 
-        #     _word_embeddings_lookup_table = tf.Variable(self.config.lookup_table, 
-        #         name = "_word_embeddings_lookup_table", dtype = tf.float32, trainable = False)
+            _word_embeddings_lookup_table = tf.Variable(self.config.lookup_table, 
+                name = "_word_embeddings_lookup_table", dtype = tf.float32, trainable = False)
 
-            word_embeddings = tf.nn.embedding_lookup(self._word_embeddings_lookup_table, self.word_ids, name="word_embeddings")
+            word_embeddings = tf.nn.embedding_lookup(_word_embeddings_lookup_table, self.word_ids, name="word_embeddings")
 
 
         with tf.variable_scope("character_embedding"):
@@ -127,7 +121,7 @@ class Model(object):
 
         # concat to get the final embedding
         word_embeddings = tf.concat([word_embeddings, trained_embeddings], axis = -1)
-        self.word_embeddings = tf.nn.dropout(word_embeddings, self.dropout_embed)
+        self.word_embeddings = tf.nn.dropout(word_embeddings, self.dropout_rate)
 
 
         # main Bi-LSTM layer
@@ -137,7 +131,7 @@ class Model(object):
                 self.word_embeddings, self.sentence_lengths)
 
             output = tf.concat([output_fw, output_bw], axis=-1)
-            output = tf.nn.dropout(output, self.dropout_fc)
+            output = tf.nn.dropout(output, self.dropout_rate)
 
 
         # FC layer to project word+context representation to a score vector
@@ -163,8 +157,7 @@ class Model(object):
 
     def initialize_session(self):
         """Defines self.sess and initialize the variables"""
-
-        self.config.logger.info("Initializing tf session")
+        print("Initializing tf session")
         self.sess = tf.Session()
         self.saver  = tf.train.Saver()
         self.sess.run(tf.global_variables_initializer())
@@ -179,9 +172,9 @@ class Model(object):
         # re-load the model
         if path_model != None:
             self.restore_session(path_model)
-            self.config.logger.info("Model restored.")
+            print("Model restored.")
         elif self.sess == None and path_model == None:
-            self.config.logger.info('can not find model, exit')
+            print('can not find model, exit')
             exit()
 
 
@@ -191,18 +184,19 @@ class Model(object):
         lr = self.config.lr
 
         for epoch in range(self.config.n_epochs):
-            self.config.logger.info("Epoch {:} out of {:}".format(epoch + 1, self.config.n_epochs))
+            print("Epoch {:} out of {:}".format(epoch + 1, self.config.n_epochs))
             epoch_start_time = time.time()
 
             # self.config.batch_size
             for i, (x_batch, y_batch) in enumerate(next_batch(train_x, train_y, self.config.batch_size, shuffle = True)):
                 # print("batch:{}".format(i))
-                fd, sentence_lengths,_,_ = self.get_fd(x_batch, y_batch, lr, dropout_embed = self.config.dropout_embed, dropout_fc = self.config.dropout_fc)
+                fd, sentence_lengths,_,_ = self.get_fd(x_batch, y_batch, lr, dropout_rate = self.config.dropout)
                 
                 _, train_loss  = self.sess.run([self.train_op, self.loss], feed_dict=fd)
 
             metrics = self.evaluate(dev_x, dev_y)
-            self.config.logger.info("Epoch {:} 's F1 ={:}, epoch_runing_time ={:} .".format(epoch + 1, metrics["f1"], (time.time() - epoch_start_time)))
+            print("Epoch {:} 's F1 ={:}, epoch_runing_time ={:} .".format(epoch + 1, metrics["f1"], (time.time() - epoch_start_time)))
+
             # if there is more then 1 epoch without improvement, try a small lr
             if (self.config.lr_decay < 1) and (nepoch_no_imprv > 1):
                 lr *= self.config.lr_decay
@@ -212,14 +206,14 @@ class Model(object):
             if metrics["f1"] >= best_F1:
                 nepoch_no_imprv = 0
                 best_F1 = metrics["f1"]
-                self.config.logger.info("- new best F1, save new model.")
+                print("- new best F1, save new model.")
                 if self.config.if_save_model:
                     self.save_session()
 
             else:
                 nepoch_no_imprv += 1
                 if nepoch_no_imprv >= self.config.nepoch_no_imprv:
-                    self.config.logger.info("- early stopping {} epochs without improvement".format(nepoch_no_imprv))
+                    print("- early stopping {} epochs without improvement".format(nepoch_no_imprv))
                     break
 
 
@@ -281,17 +275,15 @@ class Model(object):
         """Saves session = weights"""
         if not os.path.exists(self.config.path_model):
             os.makedirs(self.config.path_model)
-        model = self.config.path_model + 'model.ckpt'
-        self.saver.save(self.sess, model)
+        self.saver.save(self.sess, self.config.path_model)
         
     def restore_session(self, path_model):
-        model = path_model + 'model.ckpt'
-        self.saver.restore(self.sess, model)
+        self.saver.restore(self.sess, path_model)
         
     def close(self):
         self.sess.close()
         
-    def get_fd(self, x_batch, y_batch, lr = None, dropout_embed = 1, dropout_fc = 1):
+    def get_fd(self, x_batch, y_batch, lr = None, dropout_rate = 1):
         sentences = [list(zip(*x))[1] for x in x_batch]
         char_sentences = [list(zip(*x))[0] for x in x_batch]
 
@@ -306,9 +298,7 @@ class Model(object):
             self.word_lengths: chars_lengths,
             self.labels: label_padded,
             self.lr: lr,
-            self.dropout_embed: dropout_embed,
-            self.dropout_fc: dropout_fc,
-            self._word_embeddings_lookup_table: self.config.lookup_table
+            self.dropout_rate: dropout_rate
         }
         return fd,sentence_lengths,label_padded,sentences
 
@@ -317,9 +307,9 @@ class Model(object):
         # check the sess exist
         if path_model != None:
             self.restore_session(path_model)
-            self.config.logger.info("Model restored.")
+            print("Model restored.")
         elif self.sess == None and path_model == None:
-            self.config.logger.info('can not find model, exit')
+            print('can not find model, exit')
             exit()
             
         row = ''
@@ -349,6 +339,6 @@ class Model(object):
         os.system(shell_command)
         with open(path_result, 'r') as f:
             classification_report = f.read()
-            self.config.logger.info(classification_report) 
-            
+            print(classification_report) 
+            print()
 

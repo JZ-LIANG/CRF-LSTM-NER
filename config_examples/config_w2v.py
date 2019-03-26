@@ -12,7 +12,7 @@ class Config():
 
     # types: glove/fasttext/w2v/contextual
     # contextual means: flair/elmo or combinations of them
-    embedding_type = 'glove'
+    embedding_type = 'contextual'
     
 
 
@@ -21,11 +21,12 @@ class Config():
     #                                          #
     ############################################
     # embeddings_size
-    dim_word = 100
+    # not need to set in contextual case
+    dim_word = 300
     dim_char = 50
 
     # model hyperparameters
-    hidden_size_char = 100 # lstm on chars
+    hidden_size_char = 64 # lstm on chars
     hidden_size_lstm = 128 # lstm on word embeddings
 
     # training
@@ -40,13 +41,13 @@ class Config():
 
 
     # The probability that each element is kept.
-    dropout_embed          = 0.5
-    dropout_fc            = 0.8
-    batch_size       = 50
-    lr_method        = "adam"
-    lr               = 0.001
-    lr_decay         = 0.9
-    clip             = -1 # if negative, no clipping
+    dropout_embed  = 0.5
+    dropout_fc     = 0.8
+    batch_size     = 50
+    lr_method      = "adam"
+    lr             = 0.001
+    lr_decay       = 0.9
+    clip           = -1 # if negative, no clipping
 
 
     # contextual embedding lookup table size
@@ -254,10 +255,10 @@ class Config():
             formatter = logging.Formatter('%(message)s')
             handler.setFormatter(formatter)
             logger.addHandler(handler)
-            # console
-            ch = logging.StreamHandler(sys.stdout)
-            ch.setLevel(logging.DEBUG)
-            ch.setFormatter(formatter)
-            logger.addHandler(ch)
+            # # console
+            # ch = logging.StreamHandler(sys.stdout)
+            # ch.setLevel(logging.DEBUG)
+            # ch.setFormatter(formatter)
+            # logger.addHandler(ch)
 
             return logger

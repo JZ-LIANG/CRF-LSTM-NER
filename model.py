@@ -1,6 +1,6 @@
 import os
 import tensorflow as tf
-from pre_processing import next_batch, pad_sentence, pad_word, get_chunks
+from utils import next_batch, pad_sentence, pad_word, get_chunks
 import codecs
 import numpy as np
 import time
@@ -80,13 +80,24 @@ class Model(object):
             self.dropout_embed = tf.placeholder(dtype=tf.float32, shape=[], name="dropout_embed")
             self.dropout_fc = tf.placeholder(dtype=tf.float32, shape=[], name="dropout_fc")
 
+            # embedding lookup table, if the embedding is contextual embedding(not in ['glove', 'w2v', 'fasttext']), due to the too big lookup_table size, we need feed it as input variable
+            # or use tf.record if future version
+            # more generate use the commented one and adjust lookup_table_d0 in config file accordingly
+            # self._word_embeddings_lookup_table = tf.placeholder(dtype=tf.float32, shape=[config.lookup_table_d0, config.lookup_table_d1], name="_word_embeddings_lookup_table")
+            if self.config.embedding_type not in ['glove', 'w2v', 'fasttext']:
+                (d0, d1) = self.config.lookup_table.shape
+                self._word_embeddings_lookup_table = tf.placeholder(dtype=tf.float32, shape=[d0, d1], name="_word_embeddings_lookup_table")
 
 
+
+        # if use contextual embedding, load lookup table from feed
         with tf.variable_scope("pretrained_embedding"): 
-            _word_embeddings_lookup_table = tf.Variable(self.config.lookup_table, 
-                name = "_word_embeddings_lookup_table", dtype = tf.float32, trainable = False)
-
-            word_embeddings = tf.nn.embedding_lookup(_word_embeddings_lookup_table, self.word_ids, name="word_embeddings")
+            if self.config.embedding_type in ['glove', 'w2v', 'fasttext']:
+                _word_embeddings_lookup_table = tf.Variable(self.config.lookup_table, 
+                    name = "_word_embeddings_lookup_table", dtype = tf.float32, trainable = False)
+                word_embeddings = tf.nn.embedding_lookup(_word_embeddings_lookup_table, self.word_ids, name="word_embeddings")
+            else:
+                word_embeddings = tf.nn.embedding_lookup(self._word_embeddings_lookup_table, self.word_ids, name="word_embeddings")
 
 
         with tf.variable_scope("character_embedding"):
@@ -295,20 +306,36 @@ class Model(object):
         label_padded, _ = pad_sentence(y_batch)
         chars_padded, chars_lengths = pad_word(char_sentences)
 
-        fd = {
-            self.word_ids: sentences_padded,
-            self.sentence_lengths: sentence_lengths,
-            self.char_ids: chars_padded,
-            self.word_lengths: chars_lengths,
-            self.labels: label_padded,
-            self.lr: lr,
-            self.dropout_embed: dropout_embed,
-            self.dropout_fc: dropout_fc
-        }
+        # embedding lookup table, if the embedding is contextual embedding(not in ['glove', 'w2v', 'fasttext']), due to the too big lookup_table size, we need feed it as input variable
+        # or use tf.record if future version
+        if self.config.embedding_type not in ['glove', 'w2v', 'fasttext']:
+            fd = {
+                self.word_ids: sentences_padded,
+                self.sentence_lengths: sentence_lengths,
+                self.char_ids: chars_padded,
+                self.word_lengths: chars_lengths,
+                self.labels: label_padded,
+                self.lr: lr,
+                self.dropout_embed: dropout_embed,
+                self.dropout_fc: dropout_fc,
+                self._word_embeddings_lookup_table: self.config.lookup_table
+            }
+        else:
+            fd = {
+                self.word_ids: sentences_padded,
+                self.sentence_lengths: sentence_lengths,
+                self.char_ids: chars_padded,
+                self.word_lengths: chars_lengths,
+                self.labels: label_padded,
+                self.lr: lr,
+                self.dropout_embed: dropout_embed,
+                self.dropout_fc: dropout_fc
+                # self._word_embeddings_lookup_table: self.config.lookup_table
+            }
         return fd,sentence_lengths,label_padded,sentences
 
 
-    def test(self, test_x, test_y, path_output_file, path_result, path_model = None):
+    def test(self, test_x, test_y, dataset = 'test', path_model = None):
         # check the sess exist
         if path_model != None:
             self.restore_session(path_model)
@@ -316,6 +343,18 @@ class Model(object):
         elif self.sess == None and path_model == None:
             self.config.logger.info('can not find model, exit')
             exit()
+
+        if dataset == 'train':
+            path_output_file = self.config.path_output_train
+            path_result = self.config.path_result_train
+        elif dataset == 'eval':
+            path_output_file = self.config.path_output_eval
+            path_result = self.config.path_result_eval
+        elif dataset == 'test':
+            path_output_file = self.config.path_output_test
+            path_result = self.config.path_result_test
+        else:
+            self.config.logger.debug("dataset choose from either: train/eval/test")
             
         row = ''
         output_file = codecs.open(path_output_file, 'w', 'UTF-8')
