@@ -1,5 +1,5 @@
 # CRF-LSTM-NER
-A CRF-BiLSTM model to benchmark the performances of different word embeddings for a given corpus. <br>
+A CRF-BiLSTM model aims at quick and convenient benchmarking the performances of different word embeddings on your own corpus. <br>
 
 the objectives of this model are:
 *  Build a CRF-BiLSTM  Network in Tensorflow with methods for easisly switching among different word embeddings (**Word2vec**, **GloVe**, **Fasttext**, **ELMo**, **Flair** and any combinations of them) while keep the same CRF-LSTM Network unchanged.

@@ -1,0 +1,10 @@
+{
+    "I-ORG": 2,
+    "O": 0,
+    "I-LOC": 3,
+    "B-LOC": 7,
+    "I-PER": 1,
+    "B-MISC": 5,
+    "I-MISC": 4,
+    "B-ORG": 6
+}

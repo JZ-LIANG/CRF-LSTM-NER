@@ -1,0 +1,151 @@
+2019-01-29 16:50:56,052 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-29 17:01:18,013 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-29 17:20:47,756 - logger - INFO - Initializing tf session
+2019-01-29 17:20:50,818 - logger - INFO - Epoch 1 out of 50
+2019-01-29 18:01:52,475 - logger - INFO - Epoch 1 's F1 =92.39112297680629, epoch_runing_time =2461.6552073955536 .
+2019-01-29 18:01:52,476 - logger - INFO - - new best F1, save new model.
+2019-01-29 18:01:53,446 - logger - INFO - Epoch 2 out of 50
+2019-01-29 18:43:03,009 - logger - INFO - Epoch 2 's F1 =94.50898453823652, epoch_runing_time =2469.559881210327 .
+2019-01-29 18:43:03,010 - logger - INFO - - new best F1, save new model.
+2019-01-29 18:43:04,299 - logger - INFO - Epoch 3 out of 50
+2019-01-29 19:24:07,016 - logger - INFO - Epoch 3 's F1 =93.97529619359717, epoch_runing_time =2462.7136340141296 .
+2019-01-29 19:24:07,018 - logger - INFO - Epoch 4 out of 50
+2019-01-29 20:04:55,822 - logger - INFO - Epoch 4 's F1 =94.55884815000837, epoch_runing_time =2448.8025624752045 .
+2019-01-29 20:04:55,823 - logger - INFO - - new best F1, save new model.
+2019-01-29 20:04:57,111 - logger - INFO - Epoch 5 out of 50
+2019-01-29 20:46:05,470 - logger - INFO - Epoch 5 's F1 =94.74564926372156, epoch_runing_time =2468.3548543453217 .
+2019-01-29 20:46:05,471 - logger - INFO - - new best F1, save new model.
+2019-01-29 20:46:06,829 - logger - INFO - Epoch 6 out of 50
+2019-01-29 21:27:41,612 - logger - INFO - Epoch 6 's F1 =94.88488907492675, epoch_runing_time =2494.779373884201 .
+2019-01-29 21:27:41,613 - logger - INFO - - new best F1, save new model.
+2019-01-29 21:27:42,724 - logger - INFO - Epoch 7 out of 50
+2019-01-29 22:08:58,189 - logger - INFO - Epoch 7 's F1 =95.0990265189661, epoch_runing_time =2475.462527990341 .
+2019-01-29 22:08:58,190 - logger - INFO - - new best F1, save new model.
+2019-01-29 22:08:59,361 - logger - INFO - Epoch 8 out of 50
+2019-01-29 22:50:07,912 - logger - INFO - Epoch 8 's F1 =94.77124183006536, epoch_runing_time =2468.5486001968384 .
+2019-01-29 22:50:07,913 - logger - INFO - Epoch 9 out of 50
+2019-01-29 23:31:39,303 - logger - INFO - Epoch 9 's F1 =95.20221049987441, epoch_runing_time =2491.388642311096 .
+2019-01-29 23:31:39,303 - logger - INFO - - new best F1, save new model.
+2019-01-29 23:31:40,585 - logger - INFO - Epoch 10 out of 50
+2019-01-30 00:12:38,278 - logger - INFO - Epoch 10 's F1 =94.69887602751216, epoch_runing_time =2457.6891310214996 .
+2019-01-30 00:12:38,279 - logger - INFO - Epoch 11 out of 50
+2019-01-30 00:53:31,600 - logger - INFO - Epoch 11 's F1 =94.88488907492675, epoch_runing_time =2453.3200418949127 .
+2019-01-30 00:53:31,601 - logger - INFO - Epoch 12 out of 50
+2019-01-30 01:34:23,165 - logger - INFO - Epoch 12 's F1 =94.90018453279652, epoch_runing_time =2451.562880039215 .
+2019-01-30 01:34:23,166 - logger - INFO - Epoch 13 out of 50
+2019-01-30 02:15:36,127 - logger - INFO - Epoch 13 's F1 =95.26205450733754, epoch_runing_time =2472.959589958191 .
+2019-01-30 02:15:36,128 - logger - INFO - - new best F1, save new model.
+2019-01-30 02:15:37,323 - logger - INFO - Epoch 14 out of 50
+2019-01-30 02:56:17,453 - logger - INFO - Epoch 14 's F1 =95.19416254298415, epoch_runing_time =2440.1257874965668 .
+2019-01-30 02:56:17,454 - logger - INFO - Epoch 15 out of 50
+2019-01-30 03:37:39,070 - logger - INFO - Epoch 15 's F1 =95.01299136702707, epoch_runing_time =2481.6153054237366 .
+2019-01-30 03:37:39,071 - logger - INFO - Epoch 16 out of 50
+2019-01-30 04:18:46,599 - logger - INFO - Epoch 16 's F1 =95.15019298540024, epoch_runing_time =2467.5273971557617 .
+2019-01-30 04:18:46,600 - logger - INFO - Epoch 17 out of 50
+2019-01-30 05:00:17,050 - logger - INFO - Epoch 17 's F1 =95.14465408805032, epoch_runing_time =2490.4486076831818 .
+2019-01-30 05:00:17,051 - logger - INFO - Epoch 18 out of 50
+2019-01-30 05:41:15,074 - logger - INFO - Epoch 18 's F1 =95.27724184212732, epoch_runing_time =2458.022016763687 .
+2019-01-30 05:41:15,075 - logger - INFO - - new best F1, save new model.
+2019-01-30 05:41:16,332 - logger - INFO - Epoch 19 out of 50
+2019-01-30 06:22:50,525 - logger - INFO - Epoch 19 's F1 =95.37945492662473, epoch_runing_time =2494.1890711784363 .
+2019-01-30 06:22:50,526 - logger - INFO - - new best F1, save new model.
+2019-01-30 06:22:51,653 - logger - INFO - Epoch 20 out of 50
+2019-01-30 07:03:39,422 - logger - INFO - Epoch 20 's F1 =95.11499076716468, epoch_runing_time =2447.7662320137024 .
+2019-01-30 07:03:39,423 - logger - INFO - Epoch 21 out of 50
+2019-01-30 07:45:08,106 - logger - INFO - Epoch 21 's F1 =95.22450692404531, epoch_runing_time =2488.682046175003 .
+2019-01-30 07:45:08,107 - logger - INFO - Epoch 22 out of 50
+2019-01-30 08:26:15,791 - logger - INFO - Epoch 22 's F1 =95.09680663816948, epoch_runing_time =2467.6825938224792 .
+2019-01-30 08:26:15,792 - logger - INFO - Epoch 23 out of 50
+2019-01-30 09:07:30,021 - logger - INFO - Epoch 23 's F1 =95.19577429361952, epoch_runing_time =2474.2282469272614 .
+2019-01-30 09:07:30,023 - logger - INFO - Epoch 24 out of 50
+2019-01-30 09:48:29,800 - logger - INFO - Epoch 24 's F1 =95.32036229453203, epoch_runing_time =2459.7761845588684 .
+2019-01-30 09:48:29,801 - logger - INFO - Epoch 25 out of 50
+2019-01-30 10:29:31,614 - logger - INFO - Epoch 25 's F1 =95.56170819699639, epoch_runing_time =2461.8130848407745 .
+2019-01-30 10:29:31,616 - logger - INFO - - new best F1, save new model.
+2019-01-30 10:29:32,727 - logger - INFO - Epoch 26 out of 50
+2019-01-30 11:10:44,267 - logger - INFO - Epoch 26 's F1 =95.54065381391452, epoch_runing_time =2471.536354780197 .
+2019-01-30 11:10:44,268 - logger - INFO - Epoch 27 out of 50
+2019-01-30 11:52:17,817 - logger - INFO - Epoch 27 's F1 =95.50863080274844, epoch_runing_time =2493.547860145569 .
+2019-01-30 11:52:17,818 - logger - INFO - Epoch 28 out of 50
+2019-01-30 12:33:15,127 - logger - INFO - Epoch 28 's F1 =95.20536462699077, epoch_runing_time =2457.30819940567 .
+2019-01-30 12:33:15,128 - logger - INFO - Epoch 29 out of 50
+2019-01-30 13:14:00,597 - logger - INFO - Epoch 29 's F1 =95.38022973086277, epoch_runing_time =2445.468528032303 .
+2019-01-30 13:14:00,599 - logger - INFO - Epoch 30 out of 50
+2019-01-30 13:55:10,086 - logger - INFO - Epoch 30 's F1 =95.41222846599011, epoch_runing_time =2469.4857499599457 .
+2019-01-30 13:55:10,087 - logger - INFO - Epoch 31 out of 50
+2019-01-30 14:36:39,499 - logger - INFO - Epoch 31 's F1 =95.3314893973682, epoch_runing_time =2489.411474943161 .
+2019-01-30 14:36:39,500 - logger - INFO - - early stopping 6 epochs without improvement
+2019-01-30 14:44:08,989 - logger - INFO - processed 51363 tokens with 5942 phrases; found: 5989 phrases; correct: 5687.
+accuracy:  99.25%; precision:  94.96%; recall:  95.71%; FB1:  95.33
+              LOC: precision:  96.96%; recall:  97.33%; FB1:  97.15  1844
+             MISC: precision:  89.28%; recall:  90.35%; FB1:  89.81  933
+              ORG: precision:  93.54%; recall:  93.89%; FB1:  93.71  1346
+              PER: precision:  96.84%; recall:  98.10%; FB1:  97.46  1866
+
+2019-01-30 15:51:12,606 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-30 16:40:12,015 - logger - INFO - Initializing tf session
+2019-01-30 16:40:21,682 - logger - INFO - Model restored.
+2019-01-30 17:19:04,385 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-30 17:38:50,996 - logger - INFO - Initializing tf session
+2019-01-30 17:38:55,463 - logger - INFO - Model restored.
+2019-01-30 17:51:09,321 - logger - INFO - processed 51363 tokens with 5942 phrases; found: 5977 phrases; correct: 5695.
+accuracy:  99.30%; precision:  95.28%; recall:  95.84%; FB1:  95.56
+              LOC: precision:  97.02%; recall:  97.39%; FB1:  97.20  1844
+             MISC: precision:  90.65%; recall:  90.46%; FB1:  90.55  920
+              ORG: precision:  93.75%; recall:  93.89%; FB1:  93.82  1343
+              PER: precision:  96.95%; recall:  98.43%; FB1:  97.68  1870
+
+2019-01-30 17:51:09,930 - logger - INFO - Model restored.
+2019-01-30 18:23:36,860 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-31 08:42:38,182 - logger - INFO - Initializing tf session
+2019-01-31 08:42:40,849 - logger - INFO - Model restored.
+2019-01-31 08:43:24,030 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-31 09:03:06,034 - logger - INFO - Initializing tf session
+2019-01-31 09:03:08,551 - logger - INFO - Model restored.
+2019-01-31 09:39:25,301 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-31 09:59:10,916 - logger - INFO - Initializing tf session
+2019-01-31 09:59:14,375 - logger - INFO - Model restored.
+2019-01-31 11:15:52,490 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-31 11:16:52,683 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-31 11:56:58,833 - logger - INFO - Initializing tf session
+2019-01-31 11:57:04,145 - logger - INFO - Model restored.
+2019-01-31 13:18:02,301 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-31 13:37:46,172 - logger - INFO - Initializing tf session
+2019-01-31 13:37:49,342 - logger - INFO - Model restored.
+2019-01-31 14:52:02,496 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-31 15:11:41,238 - logger - INFO - Initializing tf session
+2019-01-31 15:11:44,030 - logger - INFO - Model restored.
+2019-01-31 15:23:55,496 - logger - INFO - 
+2019-01-31 15:41:11,356 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-31 16:00:49,237 - logger - INFO - Initializing tf session
+2019-01-31 16:00:52,464 - logger - INFO - Model restored.
+2019-01-31 16:38:44,561 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-31 16:45:34,343 - logger - INFO - Initializing tf session
+2019-01-31 16:45:37,807 - logger - INFO - Model restored.
+2019-01-31 16:47:23,019 - logger - INFO - the config of this run are :elmo_flair, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-31 16:54:03,638 - logger - INFO - Initializing tf session
+2019-01-31 16:54:06,440 - logger - INFO - Model restored.
+2019-01-31 17:01:16,324 - logger - INFO - processed 51363 tokens with 5942 phrases; found: 5977 phrases; correct: 5695.
+accuracy:  99.30%; precision:  95.28%; recall:  95.84%; FB1:  95.56
+              LOC: precision:  97.02%; recall:  97.39%; FB1:  97.20  1844
+             MISC: precision:  90.65%; recall:  90.46%; FB1:  90.55  920
+              ORG: precision:  93.75%; recall:  93.89%; FB1:  93.82  1343
+              PER: precision:  96.95%; recall:  98.43%; FB1:  97.68  1870
+
+2019-01-31 17:01:16,490 - logger - INFO - Model restored.
+2019-01-31 17:08:58,335 - logger - INFO - processed 46436 tokens with 5648 phrases; found: 5716 phrases; correct: 5185.
+accuracy:  98.34%; precision:  90.71%; recall:  91.80%; FB1:  91.25
+              LOC: precision:  92.36%; recall:  92.75%; FB1:  92.55  1675
+             MISC: precision:  77.61%; recall:  80.48%; FB1:  79.02  728
+              ORG: precision:  88.86%; recall:  90.79%; FB1:  89.82  1697
+              PER: precision:  96.84%; recall:  96.78%; FB1:  96.81  1616
+
+2019-01-31 17:11:22,949 - logger - INFO - Initializing tf session
+2019-01-31 17:11:23,581 - logger - INFO - Model restored.
+2019-01-31 17:19:06,365 - logger - INFO - processed 46436 tokens with 5648 phrases; found: 5716 phrases; correct: 5185.
+accuracy:  98.34%; precision:  90.71%; recall:  91.80%; FB1:  91.25
+              LOC: precision:  92.36%; recall:  92.75%; FB1:  92.55  1675
+             MISC: precision:  77.61%; recall:  80.48%; FB1:  79.02  728
+              ORG: precision:  88.86%; recall:  90.79%; FB1:  89.82  1697
+              PER: precision:  96.84%; recall:  96.78%; FB1:  96.81  1616
+

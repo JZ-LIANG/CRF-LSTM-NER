@@ -1,0 +1,224 @@
+2019-01-07 17:41:26,668:INFO: the config of this run are :glove300, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-07 17:42:01,030:WARNING: From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/rnn.py:430: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2019-01-07 17:42:01,054:WARNING: From /usr/local/lib/python3.5/dist-packages/tensorflow/python/util/deprecation.py:454: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2019-01-07 17:42:04,053:INFO: Initializing tf session
+2019-01-07 17:42:04,810:INFO: Epoch 1 out of 30
+2019-01-07 17:57:01,071:INFO: Epoch 1 's F1 =79.64646893855698, epoch_runing_time =896.2585241794586 .
+2019-01-07 17:57:01,071:INFO: - new best F1, save new model.
+2019-01-07 17:57:01,625:INFO: Epoch 2 out of 30
+2019-01-07 18:11:47,372:INFO: Epoch 2 's F1 =84.99956721197957, epoch_runing_time =885.7463939189911 .
+2019-01-07 18:11:47,372:INFO: - new best F1, save new model.
+2019-01-07 18:11:48,324:INFO: Epoch 3 out of 30
+2019-01-07 18:26:39,992:INFO: Epoch 3 's F1 =87.49245754676322, epoch_runing_time =891.667900800705 .
+2019-01-07 18:26:39,992:INFO: - new best F1, save new model.
+2019-01-07 18:26:40,485:INFO: Epoch 4 out of 30
+2019-01-07 18:41:34,906:INFO: Epoch 4 's F1 =89.5132365499573, epoch_runing_time =894.4213356971741 .
+2019-01-07 18:41:34,907:INFO: - new best F1, save new model.
+2019-01-07 18:41:35,529:INFO: Epoch 5 out of 30
+2019-01-07 18:56:31,187:INFO: Epoch 5 's F1 =89.56418113721485, epoch_runing_time =895.6580512523651 .
+2019-01-07 18:56:31,188:INFO: - new best F1, save new model.
+2019-01-07 18:56:32,320:INFO: Epoch 6 out of 30
+2019-01-07 19:11:23,477:INFO: Epoch 6 's F1 =90.11345218800648, epoch_runing_time =891.1564400196075 .
+2019-01-07 19:11:23,477:INFO: - new best F1, save new model.
+2019-01-07 19:11:23,987:INFO: Epoch 7 out of 30
+2019-01-07 19:26:10,634:INFO: Epoch 7 's F1 =90.53961748633878, epoch_runing_time =886.6469161510468 .
+2019-01-07 19:26:10,635:INFO: - new best F1, save new model.
+2019-01-07 19:26:11,117:INFO: Epoch 8 out of 30
+2019-01-07 19:41:22,311:INFO: Epoch 8 's F1 =90.9927567106945, epoch_runing_time =911.1944162845612 .
+2019-01-07 19:41:22,361:INFO: - new best F1, save new model.
+2019-01-07 19:41:24,170:INFO: Epoch 9 out of 30
+2019-01-07 19:56:13,053:INFO: Epoch 9 's F1 =90.61653116531166, epoch_runing_time =888.883068561554 .
+2019-01-07 19:56:13,054:INFO: Epoch 10 out of 30
+2019-01-07 20:11:03,945:INFO: Epoch 10 's F1 =91.2748260057715, epoch_runing_time =890.8908448219299 .
+2019-01-07 20:11:03,945:INFO: - new best F1, save new model.
+2019-01-07 20:11:04,807:INFO: Epoch 11 out of 30
+2019-01-07 20:25:53,080:INFO: Epoch 11 's F1 =90.98464930879484, epoch_runing_time =888.2726173400879 .
+2019-01-07 20:25:53,080:INFO: Epoch 12 out of 30
+2019-01-07 20:40:40,581:INFO: Epoch 12 's F1 =91.18897771729885, epoch_runing_time =887.5005395412445 .
+2019-01-07 20:40:40,581:INFO: Epoch 13 out of 30
+2019-01-07 20:55:28,105:INFO: Epoch 13 's F1 =91.33066234762595, epoch_runing_time =887.5233938694 .
+2019-01-07 20:55:28,105:INFO: - new best F1, save new model.
+2019-01-07 20:55:28,902:INFO: Epoch 14 out of 30
+2019-01-07 21:10:21,254:INFO: Epoch 14 's F1 =91.44362307757669, epoch_runing_time =892.3518154621124 .
+2019-01-07 21:10:21,254:INFO: - new best F1, save new model.
+2019-01-07 21:10:21,729:INFO: Epoch 15 out of 30
+2019-01-07 21:25:11,117:INFO: Epoch 15 's F1 =91.19550408719346, epoch_runing_time =889.3877775669098 .
+2019-01-07 21:25:11,118:INFO: Epoch 16 out of 30
+2019-01-07 21:40:03,698:INFO: Epoch 16 's F1 =91.19823114210392, epoch_runing_time =892.5798876285553 .
+2019-01-07 21:40:03,698:INFO: Epoch 17 out of 30
+2019-01-07 21:54:56,915:INFO: Epoch 17 's F1 =91.18096856414614, epoch_runing_time =893.217294216156 .
+2019-01-07 21:54:56,916:INFO: Epoch 18 out of 30
+2019-01-07 22:09:44,212:INFO: Epoch 18 's F1 =91.2434621224903, epoch_runing_time =887.2957561016083 .
+2019-01-07 22:09:44,212:INFO: Epoch 19 out of 30
+2019-01-07 22:24:35,740:INFO: Epoch 19 's F1 =91.35760462742431, epoch_runing_time =891.5274240970612 .
+2019-01-07 22:24:35,740:INFO: Epoch 20 out of 30
+2019-01-07 22:39:19,205:INFO: Epoch 20 's F1 =91.41208418194162, epoch_runing_time =883.4599223136902 .
+2019-01-07 22:39:19,205:INFO: - early stopping 6 epochs without improvement
+2019-01-07 22:40:24,251:INFO: processed 51363 tokens with 5942 phrases; found: 5842 phrases; correct: 5386.
+accuracy:  98.19%; precision:  92.19%; recall:  90.64%; FB1:  91.41
+              LOC: precision:  94.09%; recall:  94.45%; FB1:  94.27  1844
+             MISC: precision:  89.76%; recall:  81.78%; FB1:  85.58  840
+              ORG: precision:  87.37%; recall:  84.12%; FB1:  85.71  1291
+              PER: precision:  94.75%; recall:  96.04%; FB1:  95.39  1867
+
+2019-01-07 22:41:27,499:INFO: processed 46436 tokens with 5648 phrases; found: 5548 phrases; correct: 4923.
+accuracy:  97.38%; precision:  88.73%; recall:  87.16%; FB1:  87.94
+              LOC: precision:  89.66%; recall:  91.01%; FB1:  90.33  1693
+             MISC: precision:  77.66%; recall:  71.79%; FB1:  74.61  649
+              ORG: precision:  85.46%; recall:  83.14%; FB1:  84.28  1616
+              PER: precision:  95.60%; recall:  94.00%; FB1:  94.79  1590
+
+2019-01-08 15:46:32,239:INFO: the config of this run are :glove300, dropout_rate = (0.8,0.5), main_lstm = 500
+2019-01-08 15:47:07,585:INFO: Initializing tf session
+2019-01-08 15:47:08,607:INFO: Epoch 1 out of 30
+2019-01-08 15:57:12,597:INFO: Epoch 1 's F1 =81.45880706664335, epoch_runing_time =603.9892430305481 .
+2019-01-08 15:57:12,597:INFO: - new best F1, save new model.
+2019-01-08 15:57:13,094:INFO: Epoch 2 out of 30
+2019-01-08 16:07:10,938:INFO: Epoch 2 's F1 =86.71989011932355, epoch_runing_time =597.8435728549957 .
+2019-01-08 16:07:10,938:INFO: - new best F1, save new model.
+2019-01-08 16:07:12,197:INFO: Epoch 3 out of 30
+2019-01-08 16:17:11,048:INFO: Epoch 3 's F1 =89.34454358270418, epoch_runing_time =598.8503601551056 .
+2019-01-08 16:17:11,048:INFO: - new best F1, save new model.
+2019-01-08 16:17:12,411:INFO: Epoch 4 out of 30
+2019-01-08 16:27:11,657:INFO: Epoch 4 's F1 =89.24786324786325, epoch_runing_time =599.2453908920288 .
+2019-01-08 16:27:11,657:INFO: Epoch 5 out of 30
+2019-01-08 16:37:49,265:INFO: Epoch 5 's F1 =90.11119599354893, epoch_runing_time =637.6081824302673 .
+2019-01-08 16:37:49,265:INFO: - new best F1, save new model.
+2019-01-08 16:37:50,260:INFO: Epoch 6 out of 30
+2019-01-08 16:47:55,451:INFO: Epoch 6 's F1 =90.41377537907994, epoch_runing_time =605.1907179355621 .
+2019-01-08 16:47:55,451:INFO: - new best F1, save new model.
+2019-01-08 16:47:56,073:INFO: Epoch 7 out of 30
+2019-01-08 16:58:20,883:INFO: Epoch 7 's F1 =91.16287035451276, epoch_runing_time =624.8096141815186 .
+2019-01-08 16:58:20,883:INFO: - new best F1, save new model.
+2019-01-08 16:58:21,935:INFO: Epoch 8 out of 30
+2019-01-08 17:08:40,521:INFO: Epoch 8 's F1 =91.02235876429425, epoch_runing_time =618.5862462520599 .
+2019-01-08 17:08:40,521:INFO: Epoch 9 out of 30
+2019-01-08 17:18:37,183:INFO: Epoch 9 's F1 =90.73948439620081, epoch_runing_time =596.6614782810211 .
+2019-01-08 17:18:37,183:INFO: Epoch 10 out of 30
+2019-01-08 17:28:34,661:INFO: Epoch 10 's F1 =90.8013878310908, epoch_runing_time =597.4779636859894 .
+2019-01-08 17:28:34,661:INFO: Epoch 11 out of 30
+2019-01-08 17:38:33,859:INFO: Epoch 11 's F1 =90.82755119309527, epoch_runing_time =599.1978042125702 .
+2019-01-08 17:38:33,859:INFO: Epoch 12 out of 30
+2019-01-08 17:48:30,787:INFO: Epoch 12 's F1 =91.43879376437516, epoch_runing_time =596.9280076026917 .
+2019-01-08 17:48:30,788:INFO: - new best F1, save new model.
+2019-01-08 17:48:32,097:INFO: Epoch 13 out of 30
+2019-01-08 17:58:25,159:INFO: Epoch 13 's F1 =91.16144414168937, epoch_runing_time =593.0619823932648 .
+2019-01-08 17:58:25,159:INFO: Epoch 14 out of 30
+2019-01-08 18:08:18,513:INFO: Epoch 14 's F1 =91.15866655298832, epoch_runing_time =593.3541767597198 .
+2019-01-08 18:08:18,514:INFO: Epoch 15 out of 30
+2019-01-08 18:18:13,563:INFO: Epoch 15 's F1 =91.23315708681562, epoch_runing_time =595.0496113300323 .
+2019-01-08 18:18:13,563:INFO: Epoch 16 out of 30
+2019-01-08 18:28:10,054:INFO: Epoch 16 's F1 =91.31543167912984, epoch_runing_time =596.4905033111572 .
+2019-01-08 18:28:10,054:INFO: Epoch 17 out of 30
+2019-01-08 18:38:03,782:INFO: Epoch 17 's F1 =91.31843765990108, epoch_runing_time =593.7275450229645 .
+2019-01-08 18:38:03,782:INFO: Epoch 18 out of 30
+2019-01-08 18:48:01,122:INFO: Epoch 18 's F1 =91.48356327712484, epoch_runing_time =597.3397152423859 .
+2019-01-08 18:48:01,122:INFO: - new best F1, save new model.
+2019-01-08 18:48:01,766:INFO: Epoch 19 out of 30
+2019-01-08 18:57:59,926:INFO: Epoch 19 's F1 =91.59385868182204, epoch_runing_time =598.1591022014618 .
+2019-01-08 18:57:59,926:INFO: - new best F1, save new model.
+2019-01-08 18:58:01,163:INFO: Epoch 20 out of 30
+2019-01-08 19:07:59,994:INFO: Epoch 20 's F1 =91.59243234071435, epoch_runing_time =598.831259727478 .
+2019-01-08 19:07:59,994:INFO: Epoch 21 out of 30
+2019-01-08 19:17:55,695:INFO: Epoch 21 's F1 =91.52397989607293, epoch_runing_time =595.7005722522736 .
+2019-01-08 19:17:55,695:INFO: Epoch 22 out of 30
+2019-01-08 19:27:48,999:INFO: Epoch 22 's F1 =91.31800050920818, epoch_runing_time =593.3038845062256 .
+2019-01-08 19:27:48,999:INFO: Epoch 23 out of 30
+2019-01-08 19:37:49,263:INFO: Epoch 23 's F1 =91.42517209144218, epoch_runing_time =600.2636246681213 .
+2019-01-08 19:37:49,263:INFO: Epoch 24 out of 30
+2019-01-08 19:47:43,701:INFO: Epoch 24 's F1 =91.59292035398231, epoch_runing_time =594.4375615119934 .
+2019-01-08 19:47:43,701:INFO: Epoch 25 out of 30
+2019-01-08 19:57:37,572:INFO: Epoch 25 's F1 =91.56811026971837, epoch_runing_time =593.8709392547607 .
+2019-01-08 19:57:37,572:INFO: - early stopping 6 epochs without improvement
+2019-01-08 19:58:20,708:INFO: processed 51363 tokens with 5942 phrases; found: 5811 phrases; correct: 5381.
+accuracy:  98.13%; precision:  92.60%; recall:  90.56%; FB1:  91.57
+              LOC: precision:  93.87%; recall:  95.05%; FB1:  94.45  1860
+             MISC: precision:  89.39%; recall:  82.21%; FB1:  85.65  848
+              ORG: precision:  89.27%; recall:  81.88%; FB1:  85.41  1230
+              PER: precision:  94.98%; recall:  96.58%; FB1:  95.77  1873
+
+2019-01-08 19:59:01,732:INFO: processed 46436 tokens with 5648 phrases; found: 5500 phrases; correct: 4903.
+accuracy:  97.37%; precision:  89.15%; recall:  86.81%; FB1:  87.96
+              LOC: precision:  89.21%; recall:  91.25%; FB1:  90.22  1706
+             MISC: precision:  80.03%; recall:  74.22%; FB1:  77.01  651
+              ORG: precision:  86.53%; recall:  80.43%; FB1:  83.37  1544
+              PER: precision:  95.31%; recall:  94.25%; FB1:  94.78  1599
+
+2019-01-08 20:01:01,846:INFO: the config of this run are :glove300, dropout_rate = (0.5,0.5), main_lstm = 500
+2019-01-08 20:01:33,322:INFO: Initializing tf session
+2019-01-08 20:01:34,058:INFO: Epoch 1 out of 30
+2019-01-08 20:11:31,285:INFO: Epoch 1 's F1 =79.97919015000433, epoch_runing_time =597.2265796661377 .
+2019-01-08 20:11:31,285:INFO: - new best F1, save new model.
+2019-01-08 20:11:31,848:INFO: Epoch 2 out of 30
+2019-01-08 20:21:21,374:INFO: Epoch 2 's F1 =84.76603119584057, epoch_runing_time =589.5256910324097 .
+2019-01-08 20:21:21,374:INFO: - new best F1, save new model.
+2019-01-08 20:21:22,309:INFO: Epoch 3 out of 30
+2019-01-08 20:31:13,263:INFO: Epoch 3 's F1 =87.1605995717345, epoch_runing_time =590.9533021450043 .
+2019-01-08 20:31:13,263:INFO: - new best F1, save new model.
+2019-01-08 20:31:13,705:INFO: Epoch 4 out of 30
+2019-01-08 20:41:05,950:INFO: Epoch 4 's F1 =89.12503213642987, epoch_runing_time =592.2452144622803 .
+2019-01-08 20:41:05,950:INFO: - new best F1, save new model.
+2019-01-08 20:41:07,248:INFO: Epoch 5 out of 30
+2019-01-08 20:51:01,752:INFO: Epoch 5 's F1 =88.92339544513457, epoch_runing_time =594.5032384395599 .
+2019-01-08 20:51:01,752:INFO: Epoch 6 out of 30
+2019-01-08 21:00:54,341:INFO: Epoch 6 's F1 =90.45778579403934, epoch_runing_time =592.5889003276825 .
+2019-01-08 21:00:54,341:INFO: - new best F1, save new model.
+2019-01-08 21:00:55,410:INFO: Epoch 7 out of 30
+2019-01-08 21:10:50,495:INFO: Epoch 7 's F1 =90.41025199965598, epoch_runing_time =595.0848047733307 .
+2019-01-08 21:10:50,495:INFO: Epoch 8 out of 30
+2019-01-08 21:20:44,814:INFO: Epoch 8 's F1 =90.51481260138307, epoch_runing_time =594.3192005157471 .
+2019-01-08 21:20:44,814:INFO: - new best F1, save new model.
+2019-01-08 21:20:45,289:INFO: Epoch 9 out of 30
+2019-01-08 21:30:43,017:INFO: Epoch 9 's F1 =90.67622950819673, epoch_runing_time =597.7277636528015 .
+2019-01-08 21:30:43,018:INFO: - new best F1, save new model.
+2019-01-08 21:30:44,146:INFO: Epoch 10 out of 30
+2019-01-08 21:40:38,510:INFO: Epoch 10 's F1 =91.07371657982405, epoch_runing_time =594.3639287948608 .
+2019-01-08 21:40:38,511:INFO: - new best F1, save new model.
+2019-01-08 21:40:39,553:INFO: Epoch 11 out of 30
+2019-01-08 21:50:34,090:INFO: Epoch 11 's F1 =90.83523736989085, epoch_runing_time =594.5359463691711 .
+2019-01-08 21:50:34,090:INFO: Epoch 12 out of 30
+2019-01-08 22:00:29,404:INFO: Epoch 12 's F1 =91.06687085247576, epoch_runing_time =595.3144924640656 .
+2019-01-08 22:00:29,405:INFO: Epoch 13 out of 30
+2019-01-08 22:10:28,440:INFO: Epoch 13 's F1 =91.23944382837158, epoch_runing_time =599.0354127883911 .
+2019-01-08 22:10:28,440:INFO: - new best F1, save new model.
+2019-01-08 22:10:29,672:INFO: Epoch 14 out of 30
+2019-01-08 22:20:28,543:INFO: Epoch 14 's F1 =91.08405007238353, epoch_runing_time =598.8706948757172 .
+2019-01-08 22:20:28,543:INFO: Epoch 15 out of 30
+2019-01-08 22:30:25,757:INFO: Epoch 15 's F1 =91.1729554379375, epoch_runing_time =597.2139656543732 .
+2019-01-08 22:30:25,757:INFO: Epoch 16 out of 30
+2019-01-08 22:40:24,418:INFO: Epoch 16 's F1 =91.09992320163838, epoch_runing_time =598.6604795455933 .
+2019-01-08 22:40:24,418:INFO: Epoch 17 out of 30
+2019-01-08 22:50:22,118:INFO: Epoch 17 's F1 =91.74968071519795, epoch_runing_time =597.6994709968567 .
+2019-01-08 22:50:22,118:INFO: - new best F1, save new model.
+2019-01-08 22:50:23,392:INFO: Epoch 18 out of 30
+2019-01-08 23:00:18,527:INFO: Epoch 18 's F1 =91.55517682147422, epoch_runing_time =595.1350314617157 .
+2019-01-08 23:00:18,527:INFO: Epoch 19 out of 30
+2019-01-08 23:10:12,202:INFO: Epoch 19 's F1 =91.38136603645036, epoch_runing_time =593.6745774745941 .
+2019-01-08 23:10:12,202:INFO: Epoch 20 out of 30
+2019-01-08 23:20:07,607:INFO: Epoch 20 's F1 =91.39739108193366, epoch_runing_time =595.4047734737396 .
+2019-01-08 23:20:07,607:INFO: Epoch 21 out of 30
+2019-01-08 23:30:04,879:INFO: Epoch 21 's F1 =91.23373862766772, epoch_runing_time =597.2714314460754 .
+2019-01-08 23:30:04,879:INFO: Epoch 22 out of 30
+2019-01-08 23:40:03,899:INFO: Epoch 22 's F1 =91.70424572449588, epoch_runing_time =599.0201604366302 .
+2019-01-08 23:40:03,899:INFO: Epoch 23 out of 30
+2019-01-08 23:49:58,797:INFO: Epoch 23 's F1 =91.59356102546631, epoch_runing_time =594.897668838501 .
+2019-01-08 23:49:58,797:INFO: - early stopping 6 epochs without improvement
+2019-01-08 23:50:41,729:INFO: processed 51363 tokens with 5942 phrases; found: 5799 phrases; correct: 5377.
+accuracy:  98.16%; precision:  92.72%; recall:  90.49%; FB1:  91.59
+              LOC: precision:  94.54%; recall:  94.18%; FB1:  94.36  1830
+             MISC: precision:  90.08%; recall:  81.78%; FB1:  85.73  837
+              ORG: precision:  88.54%; recall:  83.52%; FB1:  85.96  1265
+              PER: precision:  94.97%; recall:  96.25%; FB1:  95.61  1867
+
+2019-01-08 23:51:22,758:INFO: processed 46436 tokens with 5648 phrases; found: 5465 phrases; correct: 4885.
+accuracy:  97.38%; precision:  89.39%; recall:  86.49%; FB1:  87.92
+              LOC: precision:  89.98%; recall:  90.41%; FB1:  90.19  1676
+             MISC: precision:  80.47%; recall:  73.36%; FB1:  76.75  640
+              ORG: precision:  86.87%; recall:  81.28%; FB1:  83.98  1554
+              PER: precision:  94.80%; recall:  93.51%; FB1:  94.15  1595
+
+2019-01-08 23:53:22,873:INFO: the config of this run are :Fasttext_wiki_cc.en, dropout_rate = (0.8,0.5) main_lstm = 300

@@ -1,0 +1,472 @@
+2019-01-11 18:25:52,889:INFO: the config of this run are :w2v_wiki, dropout_rate = (0.5,0.5) main_lstm = 100
+2019-01-11 18:25:58,766:WARNING: From /usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/rnn.py:430: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2019-01-11 18:25:58,778:WARNING: From /usr/local/lib/python3.5/dist-packages/tensorflow/python/util/deprecation.py:454: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2019-01-11 18:26:01,223:INFO: Initializing tf session
+2019-01-11 18:26:01,729:INFO: Epoch 1 out of 50
+2019-01-11 18:31:36,724:INFO: Epoch 1 's F1 =81.88132898150472, epoch_runing_time =334.99500274658203 .
+2019-01-11 18:31:36,724:INFO: - new best F1, save new model.
+2019-01-11 18:31:37,171:INFO: Epoch 2 out of 50
+2019-01-11 18:37:09,074:INFO: Epoch 2 's F1 =87.57905388312673, epoch_runing_time =331.902704000473 .
+2019-01-11 18:37:09,075:INFO: - new best F1, save new model.
+2019-01-11 18:37:09,481:INFO: Epoch 3 out of 50
+2019-01-11 18:42:40,233:INFO: Epoch 3 's F1 =88.8014071530279, epoch_runing_time =330.75159740448 .
+2019-01-11 18:42:40,233:INFO: - new best F1, save new model.
+2019-01-11 18:42:40,999:INFO: Epoch 4 out of 50
+2019-01-11 18:48:13,697:INFO: Epoch 4 's F1 =89.91490437273569, epoch_runing_time =332.6970543861389 .
+2019-01-11 18:48:13,697:INFO: - new best F1, save new model.
+2019-01-11 18:48:14,105:INFO: Epoch 5 out of 50
+2019-01-11 18:53:46,852:INFO: Epoch 5 's F1 =90.45936395759718, epoch_runing_time =332.7468762397766 .
+2019-01-11 18:53:46,852:INFO: - new best F1, save new model.
+2019-01-11 18:53:47,270:INFO: Epoch 6 out of 50
+2019-01-11 18:59:18,783:INFO: Epoch 6 's F1 =91.21536258738313, epoch_runing_time =331.5134246349335 .
+2019-01-11 18:59:18,783:INFO: - new best F1, save new model.
+2019-01-11 18:59:19,160:INFO: Epoch 7 out of 50
+2019-01-11 19:04:50,840:INFO: Epoch 7 's F1 =91.65258533288274, epoch_runing_time =331.6792850494385 .
+2019-01-11 19:04:50,840:INFO: - new best F1, save new model.
+2019-01-11 19:04:51,251:INFO: Epoch 8 out of 50
+2019-01-11 19:10:22,487:INFO: Epoch 8 's F1 =91.9878808281434, epoch_runing_time =331.2353768348694 .
+2019-01-11 19:10:22,487:INFO: - new best F1, save new model.
+2019-01-11 19:10:22,903:INFO: Epoch 9 out of 50
+2019-01-11 19:15:54,944:INFO: Epoch 9 's F1 =92.05281305188797, epoch_runing_time =332.0407979488373 .
+2019-01-11 19:15:54,944:INFO: - new best F1, save new model.
+2019-01-11 19:15:55,360:INFO: Epoch 10 out of 50
+2019-01-11 19:21:28,794:INFO: Epoch 10 's F1 =92.4150689539186, epoch_runing_time =333.4346697330475 .
+2019-01-11 19:21:28,795:INFO: - new best F1, save new model.
+2019-01-11 19:21:29,173:INFO: Epoch 11 out of 50
+2019-01-11 19:27:03,735:INFO: Epoch 11 's F1 =92.64681137472658, epoch_runing_time =334.5618042945862 .
+2019-01-11 19:27:03,735:INFO: - new best F1, save new model.
+2019-01-11 19:27:04,114:INFO: Epoch 12 out of 50
+2019-01-11 19:32:34,288:INFO: Epoch 12 's F1 =93.37709332660101, epoch_runing_time =330.17363381385803 .
+2019-01-11 19:32:34,288:INFO: - new best F1, save new model.
+2019-01-11 19:32:34,668:INFO: Epoch 13 out of 50
+2019-01-11 19:38:06,374:INFO: Epoch 13 's F1 =93.36584545530985, epoch_runing_time =331.70590138435364 .
+2019-01-11 19:38:06,374:INFO: Epoch 14 out of 50
+2019-01-11 19:43:39,226:INFO: Epoch 14 's F1 =93.1888804904678, epoch_runing_time =332.8510854244232 .
+2019-01-11 19:43:39,226:INFO: Epoch 15 out of 50
+2019-01-11 19:49:13,028:INFO: Epoch 15 's F1 =92.8108971664004, epoch_runing_time =333.80169796943665 .
+2019-01-11 19:49:13,028:INFO: Epoch 16 out of 50
+2019-01-11 19:54:45,571:INFO: Epoch 16 's F1 =93.25946445060018, epoch_runing_time =332.54322361946106 .
+2019-01-11 19:54:45,571:INFO: Epoch 17 out of 50
+2019-01-11 20:00:17,400:INFO: Epoch 17 's F1 =93.4208312300185, epoch_runing_time =331.8282063007355 .
+2019-01-11 20:00:17,400:INFO: - new best F1, save new model.
+2019-01-11 20:00:17,812:INFO: Epoch 18 out of 50
+2019-01-11 20:05:48,735:INFO: Epoch 18 's F1 =93.372532549349, epoch_runing_time =330.92202067375183 .
+2019-01-11 20:05:48,735:INFO: Epoch 19 out of 50
+2019-01-11 20:11:20,869:INFO: Epoch 19 's F1 =93.59340844123086, epoch_runing_time =332.1339855194092 .
+2019-01-11 20:11:20,869:INFO: - new best F1, save new model.
+2019-01-11 20:11:21,288:INFO: Epoch 20 out of 50
+2019-01-11 20:16:53,729:INFO: Epoch 20 's F1 =93.64385404405581, epoch_runing_time =332.44096279144287 .
+2019-01-11 20:16:53,729:INFO: - new best F1, save new model.
+2019-01-11 20:16:54,107:INFO: Epoch 21 out of 50
+2019-01-11 20:22:27,387:INFO: Epoch 21 's F1 =93.37475858594341, epoch_runing_time =333.2798607349396 .
+2019-01-11 20:22:27,387:INFO: Epoch 22 out of 50
+2019-01-11 20:28:00,747:INFO: Epoch 22 's F1 =93.49251723558098, epoch_runing_time =333.35964155197144 .
+2019-01-11 20:28:00,747:INFO: Epoch 23 out of 50
+2019-01-11 20:33:33,613:INFO: Epoch 23 's F1 =93.73264911247581, epoch_runing_time =332.8655948638916 .
+2019-01-11 20:33:33,613:INFO: - new best F1, save new model.
+2019-01-11 20:33:34,030:INFO: Epoch 24 out of 50
+2019-01-11 20:39:05,726:INFO: Epoch 24 's F1 =93.56980751449944, epoch_runing_time =331.6958181858063 .
+2019-01-11 20:39:05,726:INFO: Epoch 25 out of 50
+2019-01-11 20:44:34,720:INFO: Epoch 25 's F1 =93.40613187736245, epoch_runing_time =328.99362659454346 .
+2019-01-11 20:44:34,720:INFO: Epoch 26 out of 50
+2019-01-11 20:50:07,641:INFO: Epoch 26 's F1 =93.48227784310431, epoch_runing_time =332.92043709754944 .
+2019-01-11 20:50:07,641:INFO: Epoch 27 out of 50
+2019-01-11 20:55:40,703:INFO: Epoch 27 's F1 =93.51478494623656, epoch_runing_time =333.06146025657654 .
+2019-01-11 20:55:40,703:INFO: Epoch 28 out of 50
+2019-01-11 21:01:16,348:INFO: Epoch 28 's F1 =93.62452750944982, epoch_runing_time =335.64517760276794 .
+2019-01-11 21:01:16,348:INFO: Epoch 29 out of 50
+2019-01-11 21:06:49,694:INFO: Epoch 29 's F1 =93.6874842397243, epoch_runing_time =333.3459792137146 .
+2019-01-11 21:06:49,695:INFO: - early stopping 6 epochs without improvement
+2019-01-11 21:07:13,585:INFO: processed 51363 tokens with 5942 phrases; found: 5955 phrases; correct: 5573.
+accuracy:  98.86%; precision:  93.59%; recall:  93.79%; FB1:  93.69
+              LOC: precision:  96.44%; recall:  95.81%; FB1:  96.12  1825
+             MISC: precision:  90.04%; recall:  87.31%; FB1:  88.66  894
+              ORG: precision:  89.58%; recall:  91.65%; FB1:  90.60  1372
+              PER: precision:  95.44%; recall:  96.58%; FB1:  96.01  1864
+
+2019-01-11 21:07:36,236:INFO: processed 46436 tokens with 5648 phrases; found: 5696 phrases; correct: 5105.
+accuracy:  97.95%; precision:  89.62%; recall:  90.39%; FB1:  90.00
+              LOC: precision:  92.95%; recall:  92.45%; FB1:  92.70  1659
+             MISC: precision:  78.89%; recall:  80.91%; FB1:  79.89  720
+              ORG: precision:  84.25%; recall:  88.26%; FB1:  86.21  1740
+              PER: precision:  96.96%; recall:  94.56%; FB1:  95.74  1577
+
+2019-01-11 21:09:36,300:INFO: the config of this run are :w2v_wiki, dropout_rate = (0.5,0.8) main_lstm = 300
+2019-01-11 21:09:41,646:INFO: Initializing tf session
+2019-01-11 21:09:42,186:INFO: Epoch 1 out of 50
+2019-01-11 21:17:24,364:INFO: Epoch 1 's F1 =84.44999999999999, epoch_runing_time =462.1773076057434 .
+2019-01-11 21:17:24,365:INFO: - new best F1, save new model.
+2019-01-11 21:17:24,827:INFO: Epoch 2 out of 50
+2019-01-11 21:25:06,832:INFO: Epoch 2 's F1 =87.1532724377776, epoch_runing_time =462.00451922416687 .
+2019-01-11 21:25:06,833:INFO: - new best F1, save new model.
+2019-01-11 21:25:07,252:INFO: Epoch 3 out of 50
+2019-01-11 21:32:48,098:INFO: Epoch 3 's F1 =90.1888375996643, epoch_runing_time =460.84519386291504 .
+2019-01-11 21:32:48,099:INFO: - new best F1, save new model.
+2019-01-11 21:32:48,983:INFO: Epoch 4 out of 50
+2019-01-11 21:40:30,627:INFO: Epoch 4 's F1 =90.81710093599798, epoch_runing_time =461.6424009799957 .
+2019-01-11 21:40:30,628:INFO: - new best F1, save new model.
+2019-01-11 21:40:31,452:INFO: Epoch 5 out of 50
+2019-01-11 21:48:15,440:INFO: Epoch 5 's F1 =91.89915966386553, epoch_runing_time =463.986937046051 .
+2019-01-11 21:48:15,441:INFO: - new best F1, save new model.
+2019-01-11 21:48:16,255:INFO: Epoch 6 out of 50
+2019-01-11 21:56:02,059:INFO: Epoch 6 's F1 =91.92004031580716, epoch_runing_time =465.8031771183014 .
+2019-01-11 21:56:02,060:INFO: - new best F1, save new model.
+2019-01-11 21:56:03,008:INFO: Epoch 7 out of 50
+2019-01-11 22:03:46,623:INFO: Epoch 7 's F1 =92.3038059952846, epoch_runing_time =463.61296010017395 .
+2019-01-11 22:03:46,623:INFO: - new best F1, save new model.
+2019-01-11 22:03:47,055:INFO: Epoch 8 out of 50
+2019-01-11 22:11:29,088:INFO: Epoch 8 's F1 =92.36064472800538, epoch_runing_time =462.031090259552 .
+2019-01-11 22:11:29,088:INFO: - new best F1, save new model.
+2019-01-11 22:11:30,060:INFO: Epoch 9 out of 50
+2019-01-11 22:19:12,711:INFO: Epoch 9 's F1 =93.1864064602961, epoch_runing_time =462.6490705013275 .
+2019-01-11 22:19:12,711:INFO: - new best F1, save new model.
+2019-01-11 22:19:13,127:INFO: Epoch 10 out of 50
+2019-01-11 22:26:58,867:INFO: Epoch 10 's F1 =93.06314638863196, epoch_runing_time =465.7380738258362 .
+2019-01-11 22:26:58,867:INFO: Epoch 11 out of 50
+2019-01-11 22:34:42,844:INFO: Epoch 11 's F1 =93.21891300689887, epoch_runing_time =463.97704577445984 .
+2019-01-11 22:34:42,844:INFO: - new best F1, save new model.
+2019-01-11 22:34:43,580:INFO: Epoch 12 out of 50
+2019-01-11 22:42:24,977:INFO: Epoch 12 's F1 =93.31762329574146, epoch_runing_time =461.3952238559723 .
+2019-01-11 22:42:24,977:INFO: - new best F1, save new model.
+2019-01-11 22:42:25,867:INFO: Epoch 13 out of 50
+2019-01-11 22:50:12,363:INFO: Epoch 13 's F1 =93.20469798657717, epoch_runing_time =466.49402618408203 .
+2019-01-11 22:50:12,363:INFO: Epoch 14 out of 50
+2019-01-11 22:57:54,131:INFO: Epoch 14 's F1 =93.53835812116628, epoch_runing_time =461.76825070381165 .
+2019-01-11 22:57:54,131:INFO: - new best F1, save new model.
+2019-01-11 22:57:54,570:INFO: Epoch 15 out of 50
+2019-01-11 23:05:34,371:INFO: Epoch 15 's F1 =93.42647925258815, epoch_runing_time =459.7995972633362 .
+2019-01-11 23:05:34,371:INFO: Epoch 16 out of 50
+2019-01-11 23:13:16,831:INFO: Epoch 16 's F1 =93.49689127877667, epoch_runing_time =462.45981550216675 .
+2019-01-11 23:13:16,831:INFO: Epoch 17 out of 50
+2019-01-11 23:20:55,944:INFO: Epoch 17 's F1 =93.36476928258674, epoch_runing_time =459.11280274391174 .
+2019-01-11 23:20:55,944:INFO: Epoch 18 out of 50
+2019-01-11 23:28:41,732:INFO: Epoch 18 's F1 =93.29304121547888, epoch_runing_time =465.7872083187103 .
+2019-01-11 23:28:41,732:INFO: Epoch 19 out of 50
+2019-01-11 23:36:22,994:INFO: Epoch 19 's F1 =93.45668629100085, epoch_runing_time =461.261625289917 .
+2019-01-11 23:36:22,994:INFO: Epoch 20 out of 50
+2019-01-11 23:44:04,788:INFO: Epoch 20 's F1 =93.61272405958093, epoch_runing_time =461.7943196296692 .
+2019-01-11 23:44:04,788:INFO: - new best F1, save new model.
+2019-01-11 23:44:05,547:INFO: Epoch 21 out of 50
+2019-01-11 23:51:46,164:INFO: Epoch 21 's F1 =93.86178520446721, epoch_runing_time =460.6149597167969 .
+2019-01-11 23:51:46,164:INFO: - new best F1, save new model.
+2019-01-11 23:51:47,069:INFO: Epoch 22 out of 50
+2019-01-11 23:59:29,429:INFO: Epoch 22 's F1 =93.468941750021, epoch_runing_time =462.3583414554596 .
+2019-01-11 23:59:29,429:INFO: Epoch 23 out of 50
+2019-01-12 00:07:11,020:INFO: Epoch 23 's F1 =93.50911075657066, epoch_runing_time =461.59066700935364 .
+2019-01-12 00:07:11,020:INFO: Epoch 24 out of 50
+2019-01-12 00:14:54,753:INFO: Epoch 24 's F1 =93.38704263175562, epoch_runing_time =463.7329499721527 .
+2019-01-12 00:14:54,753:INFO: Epoch 25 out of 50
+2019-01-12 00:22:37,315:INFO: Epoch 25 's F1 =93.53375881760161, epoch_runing_time =462.56136417388916 .
+2019-01-12 00:22:37,315:INFO: Epoch 26 out of 50
+2019-01-12 00:30:24,351:INFO: Epoch 26 's F1 =93.63666890530557, epoch_runing_time =467.0359091758728 .
+2019-01-12 00:30:24,351:INFO: Epoch 27 out of 50
+2019-01-12 00:38:05,696:INFO: Epoch 27 's F1 =93.82093316519547, epoch_runing_time =461.34481287002563 .
+2019-01-12 00:38:05,696:INFO: - early stopping 6 epochs without improvement
+2019-01-12 00:38:37,364:INFO: processed 51363 tokens with 5942 phrases; found: 5953 phrases; correct: 5580.
+accuracy:  98.92%; precision:  93.73%; recall:  93.91%; FB1:  93.82
+              LOC: precision:  95.56%; recall:  96.03%; FB1:  95.79  1846
+             MISC: precision:  90.61%; recall:  87.96%; FB1:  89.27  895
+              ORG: precision:  91.29%; recall:  90.68%; FB1:  90.98  1332
+              PER: precision:  95.16%; recall:  97.12%; FB1:  96.13  1880
+
+2019-01-12 00:39:07,398:INFO: processed 46436 tokens with 5648 phrases; found: 5675 phrases; correct: 5125.
+accuracy:  98.06%; precision:  90.31%; recall:  90.74%; FB1:  90.52
+              LOC: precision:  92.08%; recall:  92.75%; FB1:  92.41  1680
+             MISC: precision:  76.71%; recall:  79.77%; FB1:  78.21  730
+              ORG: precision:  88.49%; recall:  88.38%; FB1:  88.43  1659
+              PER: precision:  96.51%; recall:  95.86%; FB1:  96.18  1606
+
+2019-01-12 00:41:07,518:INFO: the config of this run are :w2v_wiki, dropout_rate = (0.5,0.8) main_lstm = 300
+2019-01-12 00:41:12,983:INFO: Initializing tf session
+2019-01-12 00:41:13,546:INFO: Epoch 1 out of 50
+2019-01-12 00:48:59,322:INFO: Epoch 1 's F1 =85.65940031738077, epoch_runing_time =465.7759702205658 .
+2019-01-12 00:48:59,322:INFO: - new best F1, save new model.
+2019-01-12 00:48:59,803:INFO: Epoch 2 out of 50
+2019-01-12 00:56:40,822:INFO: Epoch 2 's F1 =85.13468013468014, epoch_runing_time =461.01921105384827 .
+2019-01-12 00:56:40,823:INFO: Epoch 3 out of 50
+2019-01-12 01:04:22,851:INFO: Epoch 3 's F1 =90.69884364002012, epoch_runing_time =462.02849197387695 .
+2019-01-12 01:04:22,851:INFO: - new best F1, save new model.
+2019-01-12 01:04:23,278:INFO: Epoch 4 out of 50
+2019-01-12 01:12:05,134:INFO: Epoch 4 's F1 =90.64917591658258, epoch_runing_time =461.854909658432 .
+2019-01-12 01:12:05,134:INFO: Epoch 5 out of 50
+2019-01-12 01:19:48,212:INFO: Epoch 5 's F1 =91.44060657118787, epoch_runing_time =463.0782494544983 .
+2019-01-12 01:19:48,212:INFO: - new best F1, save new model.
+2019-01-12 01:19:48,920:INFO: Epoch 6 out of 50
+2019-01-12 01:27:30,860:INFO: Epoch 6 's F1 =92.40623683101559, epoch_runing_time =461.938836812973 .
+2019-01-12 01:27:30,860:INFO: - new best F1, save new model.
+2019-01-12 01:27:31,744:INFO: Epoch 7 out of 50
+2019-01-12 01:35:16,976:INFO: Epoch 7 's F1 =92.66940969015032, epoch_runing_time =465.2316677570343 .
+2019-01-12 01:35:16,976:INFO: - new best F1, save new model.
+2019-01-12 01:35:17,955:INFO: Epoch 8 out of 50
+2019-01-12 01:43:04,552:INFO: Epoch 8 's F1 =92.9136509005218, epoch_runing_time =466.5962920188904 .
+2019-01-12 01:43:04,552:INFO: - new best F1, save new model.
+2019-01-12 01:43:05,529:INFO: Epoch 9 out of 50
+2019-01-12 01:50:48,029:INFO: Epoch 9 's F1 =92.6545086119554, epoch_runing_time =462.49967408180237 .
+2019-01-12 01:50:48,029:INFO: Epoch 10 out of 50
+2019-01-12 01:58:29,050:INFO: Epoch 10 's F1 =93.42758562652527, epoch_runing_time =461.0215034484863 .
+2019-01-12 01:58:29,051:INFO: - new best F1, save new model.
+2019-01-12 01:58:29,454:INFO: Epoch 11 out of 50
+2019-01-12 02:06:11,335:INFO: Epoch 11 's F1 =93.35461648323951, epoch_runing_time =461.8807318210602 .
+2019-01-12 02:06:11,336:INFO: Epoch 12 out of 50
+2019-01-12 02:13:52,406:INFO: Epoch 12 's F1 =92.95584765756657, epoch_runing_time =461.0707986354828 .
+2019-01-12 02:13:52,407:INFO: Epoch 13 out of 50
+2019-01-12 02:21:33,146:INFO: Epoch 13 's F1 =93.03850681015638, epoch_runing_time =460.7395181655884 .
+2019-01-12 02:21:33,146:INFO: Epoch 14 out of 50
+2019-01-12 02:29:15,319:INFO: Epoch 14 's F1 =93.63415247840308, epoch_runing_time =462.17222571372986 .
+2019-01-12 02:29:15,319:INFO: - new best F1, save new model.
+2019-01-12 02:29:16,292:INFO: Epoch 15 out of 50
+2019-01-12 02:36:59,754:INFO: Epoch 15 's F1 =93.76784814379305, epoch_runing_time =463.4621102809906 .
+2019-01-12 02:36:59,755:INFO: - new best F1, save new model.
+2019-01-12 02:37:00,180:INFO: Epoch 16 out of 50
+2019-01-12 02:44:41,801:INFO: Epoch 16 's F1 =93.69490387037193, epoch_runing_time =461.6197850704193 .
+2019-01-12 02:44:41,801:INFO: Epoch 17 out of 50
+2019-01-12 02:52:26,284:INFO: Epoch 17 's F1 =93.5407905803196, epoch_runing_time =464.4827620983124 .
+2019-01-12 02:52:26,284:INFO: Epoch 18 out of 50
+2019-01-12 03:00:09,146:INFO: Epoch 18 's F1 =93.69853806083012, epoch_runing_time =462.8620126247406 .
+2019-01-12 03:00:09,146:INFO: Epoch 19 out of 50
+2019-01-12 03:07:51,282:INFO: Epoch 19 's F1 =93.5036557693924, epoch_runing_time =462.1351795196533 .
+2019-01-12 03:07:51,282:INFO: Epoch 20 out of 50
+2019-01-12 03:15:33,789:INFO: Epoch 20 's F1 =93.364650616559, epoch_runing_time =462.5074167251587 .
+2019-01-12 03:15:33,790:INFO: Epoch 21 out of 50
+2019-01-12 03:23:18,391:INFO: Epoch 21 's F1 =93.67811266896146, epoch_runing_time =464.6014790534973 .
+2019-01-12 03:23:18,391:INFO: - early stopping 6 epochs without improvement
+2019-01-12 03:23:50,238:INFO: processed 51363 tokens with 5942 phrases; found: 5969 phrases; correct: 5579.
+accuracy:  98.92%; precision:  93.47%; recall:  93.89%; FB1:  93.68
+              LOC: precision:  95.70%; recall:  95.65%; FB1:  95.67  1836
+             MISC: precision:  90.51%; recall:  87.96%; FB1:  89.22  896
+              ORG: precision:  90.62%; recall:  90.75%; FB1:  90.69  1343
+              PER: precision:  94.72%; recall:  97.39%; FB1:  96.04  1894
+
+2019-01-12 03:24:20,383:INFO: processed 46436 tokens with 5648 phrases; found: 5707 phrases; correct: 5114.
+accuracy:  98.01%; precision:  89.61%; recall:  90.55%; FB1:  90.07
+              LOC: precision:  91.46%; recall:  93.05%; FB1:  92.24  1697
+             MISC: precision:  77.84%; recall:  78.06%; FB1:  77.95  704
+              ORG: precision:  87.09%; recall:  88.50%; FB1:  87.79  1688
+              PER: precision:  95.43%; recall:  95.49%; FB1:  95.46  1618
+
+2019-01-12 03:26:20,495:INFO: the config of this run are :Fasttext_wiki3, dropout_rate = (0.8,0.5) main_lstm = 300
+2019-01-12 03:27:11,079:INFO: Initializing tf session
+2019-01-12 03:27:11,685:INFO: Epoch 1 out of 50
+2019-01-12 03:34:56,546:INFO: Epoch 1 's F1 =76.52866506264002, epoch_runing_time =464.8603398799896 .
+2019-01-12 03:34:56,547:INFO: - new best F1, save new model.
+2019-01-12 03:34:57,076:INFO: Epoch 2 out of 50
+2019-01-12 03:42:39,340:INFO: Epoch 2 's F1 =81.93133405730515, epoch_runing_time =462.26293420791626 .
+2019-01-12 03:42:39,340:INFO: - new best F1, save new model.
+2019-01-12 03:42:39,814:INFO: Epoch 3 out of 50
+2019-01-12 03:50:21,998:INFO: Epoch 3 's F1 =84.07341622261694, epoch_runing_time =462.1837203502655 .
+2019-01-12 03:50:21,998:INFO: - new best F1, save new model.
+2019-01-12 03:50:22,940:INFO: Epoch 4 out of 50
+2019-01-12 03:58:05,597:INFO: Epoch 4 's F1 =86.6424160392522, epoch_runing_time =462.6567406654358 .
+2019-01-12 03:58:05,597:INFO: - new best F1, save new model.
+2019-01-12 03:58:06,534:INFO: Epoch 5 out of 50
+2019-01-12 04:05:48,773:INFO: Epoch 5 's F1 =87.55570791909494, epoch_runing_time =462.2380223274231 .
+2019-01-12 04:05:48,773:INFO: - new best F1, save new model.
+2019-01-12 04:05:49,660:INFO: Epoch 6 out of 50
+2019-01-12 04:13:33,586:INFO: Epoch 6 's F1 =88.27165721060209, epoch_runing_time =463.926194190979 .
+2019-01-12 04:13:33,587:INFO: - new best F1, save new model.
+2019-01-12 04:13:34,389:INFO: Epoch 7 out of 50
+2019-01-12 04:21:14,797:INFO: Epoch 7 's F1 =88.44042894536857, epoch_runing_time =460.4074947834015 .
+2019-01-12 04:21:14,797:INFO: - new best F1, save new model.
+2019-01-12 04:21:15,899:INFO: Epoch 8 out of 50
+2019-01-12 04:29:00,304:INFO: Epoch 8 's F1 =88.36896145430062, epoch_runing_time =464.40423488616943 .
+2019-01-12 04:29:00,304:INFO: Epoch 9 out of 50
+2019-01-12 04:36:42,165:INFO: Epoch 9 's F1 =89.37970720148937, epoch_runing_time =461.8616020679474 .
+2019-01-12 04:36:42,166:INFO: - new best F1, save new model.
+2019-01-12 04:36:43,221:INFO: Epoch 10 out of 50
+2019-01-12 04:44:25,498:INFO: Epoch 10 's F1 =89.40185341196295, epoch_runing_time =462.27728629112244 .
+2019-01-12 04:44:25,498:INFO: - new best F1, save new model.
+2019-01-12 04:44:25,975:INFO: Epoch 11 out of 50
+2019-01-12 04:52:09,497:INFO: Epoch 11 's F1 =89.68247283753054, epoch_runing_time =463.52216267585754 .
+2019-01-12 04:52:09,497:INFO: - new best F1, save new model.
+2019-01-12 04:52:10,174:INFO: Epoch 12 out of 50
+2019-01-12 04:59:54,956:INFO: Epoch 12 's F1 =89.5542586483972, epoch_runing_time =464.78098034858704 .
+2019-01-12 04:59:54,956:INFO: Epoch 13 out of 50
+2019-01-12 05:07:36,576:INFO: Epoch 13 's F1 =90.45099521289998, epoch_runing_time =461.6197702884674 .
+2019-01-12 05:07:36,576:INFO: - new best F1, save new model.
+2019-01-12 05:07:37,515:INFO: Epoch 14 out of 50
+2019-01-12 05:15:16,700:INFO: Epoch 14 's F1 =89.63025210084035, epoch_runing_time =459.18531942367554 .
+2019-01-12 05:15:16,700:INFO: Epoch 15 out of 50
+2019-01-12 05:23:01,074:INFO: Epoch 15 's F1 =89.47457056247895, epoch_runing_time =464.37338757514954 .
+2019-01-12 05:23:01,074:INFO: Epoch 16 out of 50
+2019-01-12 05:30:46,544:INFO: Epoch 16 's F1 =89.71158711418452, epoch_runing_time =465.46960186958313 .
+2019-01-12 05:30:46,544:INFO: Epoch 17 out of 50
+2019-01-12 05:38:28,828:INFO: Epoch 17 's F1 =90.13611157788607, epoch_runing_time =462.28444242477417 .
+2019-01-12 05:38:28,829:INFO: Epoch 18 out of 50
+2019-01-12 05:46:11,229:INFO: Epoch 18 's F1 =90.34210305118938, epoch_runing_time =462.40078592300415 .
+2019-01-12 05:46:11,230:INFO: Epoch 19 out of 50
+2019-01-12 05:53:58,412:INFO: Epoch 19 's F1 =90.32149469786232, epoch_runing_time =467.1821448802948 .
+2019-01-12 05:53:58,412:INFO: - early stopping 6 epochs without improvement
+2019-01-12 05:54:30,197:INFO: processed 51363 tokens with 5942 phrases; found: 5940 phrases; correct: 5366.
+accuracy:  98.32%; precision:  90.34%; recall:  90.31%; FB1:  90.32
+              LOC: precision:  90.87%; recall:  94.83%; FB1:  92.81  1917
+             MISC: precision:  88.46%; recall:  83.95%; FB1:  86.14  875
+              ORG: precision:  87.29%; recall:  84.49%; FB1:  85.87  1298
+              PER: precision:  92.81%; recall:  93.21%; FB1:  93.01  1850
+
+2019-01-12 05:55:00,271:INFO: processed 46436 tokens with 5648 phrases; found: 5689 phrases; correct: 4799.
+accuracy:  97.06%; precision:  84.36%; recall:  84.97%; FB1:  84.66
+              LOC: precision:  85.27%; recall:  89.57%; FB1:  87.37  1752
+             MISC: precision:  74.46%; recall:  73.50%; FB1:  73.98  693
+              ORG: precision:  80.60%; recall:  79.53%; FB1:  80.06  1639
+              PER: precision:  91.46%; recall:  90.79%; FB1:  91.12  1605
+
+2019-01-23 16:02:48,804:INFO: the config of this run are :Fasttext_wiki_cc.en, dropout_rate = (0.5,0.5) main_lstm = 300
+2019-01-23 16:09:02,216:ERROR: Uncaught exception in ZMQStream callback
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/subprocess.py", line 1608, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/subprocess.py", line 1658, in wait
+    (pid, sts) = self._try_wait(0)
+  File "/usr/lib/python3.5/subprocess.py", line 1608, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/subprocess.py", line 559, in call
+    return p.wait(timeout=timeout)
+  File "/usr/lib/python3.5/subprocess.py", line 1658, in wait
+    (pid, sts) = self._try_wait(0)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/subprocess.py", line 561, in call
+    p.kill()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/liang/project/semester project/Untitled Folder/CRF-LSTM-NER/pre_processing.py", line 167, in get_fasttext_embedding
+    result = subprocess.call([command, option, path_bin_file], stdin = stdin_file, stdout = stdout_file)
+  File "/usr/lib/python3.5/subprocess.py", line 563, in call
+    raise
+  File "/usr/lib/python3.5/subprocess.py", line 985, in __exit__
+    if self.stderr:
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/liang/project/semester project/Untitled Folder/CRF-LSTM-NER/pre_processing.py", line 167, in get_fasttext_embedding
+    result = subprocess.call([command, option, path_bin_file], stdin = stdin_file, stdout = stdout_file)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/IPython/core/interactiveshell.py", line 2961, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-11-0577faa58a90>", line 6, in <module>
+    token2idx, char2idx, label2idx, lookup_table = initial_2idxs_fasttext(config)
+  File "/home/liang/project/semester project/Untitled Folder/CRF-LSTM-NER/pre_processing.py", line 118, in initial_2idxs_fasttext
+    config.bin_file, config.vocab_file, config.fasttext_embedding_file)
+  File "/home/liang/project/semester project/Untitled Folder/CRF-LSTM-NER/pre_processing.py", line 167, in get_fasttext_embedding
+    result = subprocess.call([command, option, path_bin_file], stdin = stdin_file, stdout = stdout_file)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/IPython/core/interactiveshell.py", line 2961, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/IPython/core/interactiveshell.py", line 2901, in run_ast_nodes
+    if self.run_code(code, result):
+  File "/usr/local/lib/python3.5/dist-packages/IPython/core/interactiveshell.py", line 2965, in run_code
+    except SystemExit as e:
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/IPython/core/interactiveshell.py", line 2785, in _run_cell
+    interactivity=interactivity, compiler=compiler, result=result)
+  File "/usr/local/lib/python3.5/dist-packages/IPython/core/interactiveshell.py", line 2901, in run_ast_nodes
+    if self.run_code(code, result):
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/IPython/core/interactiveshell.py", line 2785, in _run_cell
+    interactivity=interactivity, compiler=compiler, result=result)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/IPython/core/interactiveshell.py", line 2662, in run_cell
+    raw_cell, store_history, silent, shell_futures)
+  File "/usr/local/lib/python3.5/dist-packages/IPython/core/interactiveshell.py", line 2792, in _run_cell
+    self.displayhook.exec_result = None
+  File "/usr/local/lib/python3.5/dist-packages/IPython/core/builtin_trap.py", line 47, in __exit__
+    if self._nested_level == 1:
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/ipykernel/ipkernel.py", line 208, in do_execute
+    res = shell.run_cell(code, store_history=store_history, silent=silent)
+  File "/usr/local/lib/python3.5/dist-packages/ipykernel/zmqshell.py", line 537, in run_cell
+    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/IPython/core/interactiveshell.py", line 2662, in run_cell
+    raw_cell, store_history, silent, shell_futures)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/ipykernel/kernelbase.py", line 233, in dispatch_shell
+    handler(stream, idents, msg)
+  File "/usr/local/lib/python3.5/dist-packages/ipykernel/kernelbase.py", line 399, in execute_request
+    user_expressions, allow_stdin)
+  File "/usr/local/lib/python3.5/dist-packages/ipykernel/ipkernel.py", line 210, in do_execute
+    self._restore_input()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/ipykernel/kernelbase.py", line 233, in dispatch_shell
+    handler(stream, idents, msg)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/tornado/stack_context.py", line 300, in null_wrapper
+    return fn(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/ipykernel/kernelbase.py", line 283, in dispatcher
+    return self.dispatch_shell(stream, msg)
+  File "/usr/local/lib/python3.5/dist-packages/ipykernel/kernelbase.py", line 237, in dispatch_shell
+    self.post_handler_hook()
+  File "/usr/local/lib/python3.5/dist-packages/ipykernel/kernelbase.py", line 250, in post_handler_hook
+    signal(SIGINT, self.saved_sigint_handler)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/zmq/eventloop/zmqstream.py", line 432, in _run_callback
+    callback(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/tornado/stack_context.py", line 300, in null_wrapper
+    return fn(*args, **kwargs)
+KeyboardInterrupt

@@ -1,0 +1,102 @@
+2019-01-25 18:04:15,396 - logger - INFO - the config of this run are :flair_w2v, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-25 18:37:18,419 - logger - INFO - Initializing tf session
+2019-01-25 18:37:20,515 - logger - INFO - Epoch 1 out of 30
+2019-01-25 19:09:43,983 - logger - INFO - Epoch 1 's F1 =90.87868907282001, epoch_runing_time =1943.466643333435 .
+2019-01-25 19:09:43,984 - logger - INFO - - new best F1, save new model.
+2019-01-25 19:09:47,170 - logger - INFO - Epoch 2 out of 30
+2019-01-25 19:41:59,821 - logger - INFO - Epoch 2 's F1 =92.4507750314202, epoch_runing_time =1932.6484293937683 .
+2019-01-25 19:41:59,822 - logger - INFO - - new best F1, save new model.
+2019-01-25 19:42:00,689 - logger - INFO - Epoch 3 out of 30
+2019-01-25 20:13:03,994 - logger - INFO - Epoch 3 's F1 =93.28202124989542, epoch_runing_time =1863.302577972412 .
+2019-01-25 20:13:03,995 - logger - INFO - - new best F1, save new model.
+2019-01-25 20:13:04,762 - logger - INFO - Epoch 4 out of 30
+2019-01-25 20:45:24,517 - logger - INFO - Epoch 4 's F1 =93.40493371371035, epoch_runing_time =1939.752361536026 .
+2019-01-25 20:45:24,518 - logger - INFO - - new best F1, save new model.
+2019-01-25 20:45:25,433 - logger - INFO - Epoch 5 out of 30
+2019-01-25 21:17:50,322 - logger - INFO - Epoch 5 's F1 =93.8778933243878, epoch_runing_time =1944.8863065242767 .
+2019-01-25 21:17:50,323 - logger - INFO - - new best F1, save new model.
+2019-01-25 21:17:51,220 - logger - INFO - Epoch 6 out of 30
+2019-01-25 21:49:33,608 - logger - INFO - Epoch 6 's F1 =94.13639795319185, epoch_runing_time =1902.3846590518951 .
+2019-01-25 21:49:33,609 - logger - INFO - - new best F1, save new model.
+2019-01-25 21:49:34,383 - logger - INFO - Epoch 7 out of 30
+2019-01-25 22:21:09,758 - logger - INFO - Epoch 7 's F1 =94.41087613293051, epoch_runing_time =1895.3734238147736 .
+2019-01-25 22:21:09,759 - logger - INFO - - new best F1, save new model.
+2019-01-25 22:21:10,645 - logger - INFO - Epoch 8 out of 30
+2019-01-25 22:53:26,338 - logger - INFO - Epoch 8 's F1 =94.68915177447774, epoch_runing_time =1935.690009355545 .
+2019-01-25 22:53:26,339 - logger - INFO - - new best F1, save new model.
+2019-01-25 22:53:27,382 - logger - INFO - Epoch 9 out of 30
+2019-01-25 23:25:38,841 - logger - INFO - Epoch 9 's F1 =94.54880912445488, epoch_runing_time =1931.4491560459137 .
+2019-01-25 23:25:38,842 - logger - INFO - Epoch 10 out of 30
+2019-01-25 23:56:40,141 - logger - INFO - Epoch 10 's F1 =94.57169225606175, epoch_runing_time =1861.2978782653809 .
+2019-01-25 23:56:40,142 - logger - INFO - Epoch 11 out of 30
+2019-01-26 00:29:03,535 - logger - INFO - Epoch 11 's F1 =94.58550529678831, epoch_runing_time =1943.3919332027435 .
+2019-01-26 00:29:03,536 - logger - INFO - Epoch 12 out of 30
+2019-01-26 01:01:22,525 - logger - INFO - Epoch 12 's F1 =94.43745280644349, epoch_runing_time =1938.988426208496 .
+2019-01-26 01:01:22,526 - logger - INFO - Epoch 13 out of 30
+2019-01-26 01:31:49,107 - logger - INFO - Epoch 13 's F1 =94.51526333445152, epoch_runing_time =1826.5807058811188 .
+2019-01-26 01:31:49,109 - logger - INFO - - early stopping 5 epochs without improvement
+2019-01-26 01:36:38,248 - logger - INFO - processed 51363 tokens with 5942 phrases; found: 5982 phrases; correct: 5635.
+accuracy:  99.06%; precision:  94.20%; recall:  94.83%; FB1:  94.52
+              LOC: precision:  95.91%; recall:  97.06%; FB1:  96.48  1859
+             MISC: precision:  87.33%; recall:  90.46%; FB1:  88.87  955
+              ORG: precision:  93.61%; recall:  90.60%; FB1:  92.08  1298
+              PER: precision:  96.42%; recall:  97.88%; FB1:  97.14  1870
+
+2019-01-26 01:41:37,646 - logger - INFO - processed 46436 tokens with 5648 phrases; found: 5704 phrases; correct: 5164.
+accuracy:  98.22%; precision:  90.53%; recall:  91.43%; FB1:  90.98
+              LOC: precision:  91.74%; recall:  93.17%; FB1:  92.44  1694
+             MISC: precision:  74.78%; recall:  83.19%; FB1:  78.76  781
+              ORG: precision:  90.27%; recall:  87.72%; FB1:  88.98  1614
+              PER: precision:  97.15%; recall:  97.03%; FB1:  97.09  1615
+
+2019-01-26 01:41:37,669 - logger - INFO - the config of this run are :flair_fasttext, dropout_rate = (0.5,0.8), main_lstm = 300
+2019-01-28 08:50:32,208 - logger - INFO - Initializing tf session
+2019-01-28 08:50:32,896 - logger - INFO - Epoch 1 out of 30
+2019-01-28 09:16:24,646 - logger - INFO - Epoch 1 's F1 =89.90993995997331, epoch_runing_time =1551.7493340969086 .
+2019-01-28 09:16:24,648 - logger - INFO - - new best F1, save new model.
+2019-01-28 09:16:25,200 - logger - INFO - Epoch 2 out of 30
+2019-01-28 09:42:18,780 - logger - INFO - Epoch 2 's F1 =91.44053601340033, epoch_runing_time =1553.5621662139893 .
+2019-01-28 09:42:18,781 - logger - INFO - - new best F1, save new model.
+2019-01-28 09:42:19,593 - logger - INFO - Epoch 3 out of 30
+2019-01-28 10:08:07,211 - logger - INFO - Epoch 3 's F1 =93.94473838918283, epoch_runing_time =1547.5992386341095 .
+2019-01-28 10:08:07,212 - logger - INFO - - new best F1, save new model.
+2019-01-28 10:08:10,623 - logger - INFO - Epoch 4 out of 30
+2019-01-28 10:33:57,174 - logger - INFO - Epoch 4 's F1 =94.08214585079631, epoch_runing_time =1546.5317804813385 .
+2019-01-28 10:33:57,175 - logger - INFO - - new best F1, save new model.
+2019-01-28 10:33:57,986 - logger - INFO - Epoch 5 out of 30
+2019-01-28 10:59:54,687 - logger - INFO - Epoch 5 's F1 =94.2737195633921, epoch_runing_time =1556.6812126636505 .
+2019-01-28 10:59:54,688 - logger - INFO - - new best F1, save new model.
+2019-01-28 10:59:55,484 - logger - INFO - Epoch 6 out of 30
+2019-01-28 11:25:44,419 - logger - INFO - Epoch 6 's F1 =94.3399395364461, epoch_runing_time =1548.9163355827332 .
+2019-01-28 11:25:44,420 - logger - INFO - - new best F1, save new model.
+2019-01-28 11:25:45,306 - logger - INFO - Epoch 7 out of 30
+2019-01-28 11:51:47,665 - logger - INFO - Epoch 7 's F1 =94.34057181185545, epoch_runing_time =1562.3286302089691 .
+2019-01-28 11:51:47,666 - logger - INFO - - new best F1, save new model.
+2019-01-28 11:51:48,441 - logger - INFO - Epoch 8 out of 30
+2019-01-28 12:17:44,753 - logger - INFO - Epoch 8 's F1 =94.28355577940066, epoch_runing_time =1556.2942426204681 .
+2019-01-28 12:17:44,754 - logger - INFO - Epoch 9 out of 30
+2019-01-28 12:43:39,558 - logger - INFO - Epoch 9 's F1 =94.43558539655896, epoch_runing_time =1554.8033154010773 .
+2019-01-28 12:43:39,559 - logger - INFO - - new best F1, save new model.
+2019-01-28 12:43:40,366 - logger - INFO - Epoch 10 out of 30
+2019-01-28 13:09:32,541 - logger - INFO - Epoch 10 's F1 =94.45423273764578, epoch_runing_time =1552.1544358730316 .
+2019-01-28 13:09:32,542 - logger - INFO - - new best F1, save new model.
+2019-01-28 13:09:33,323 - logger - INFO - Epoch 11 out of 30
+2019-01-28 13:35:28,477 - logger - INFO - Epoch 11 's F1 =94.56986991187578, epoch_runing_time =1555.1349544525146 .
+2019-01-28 13:35:28,478 - logger - INFO - - new best F1, save new model.
+2019-01-28 13:35:29,276 - logger - INFO - Epoch 12 out of 30
+2019-01-28 14:01:32,497 - logger - INFO - Epoch 12 's F1 =94.68103012960782, epoch_runing_time =1563.2008922100067 .
+2019-01-28 14:01:32,498 - logger - INFO - - new best F1, save new model.
+2019-01-28 15:34:08,541 - logger - INFO - processed 51363 tokens with 5942 phrases; found: 5940 phrases; correct: 5625.
+accuracy:  99.11%; precision:  94.70%; recall:  94.67%; FB1:  94.68
+              LOC: precision:  95.76%; recall:  97.17%; FB1:  96.46  1864
+             MISC: precision:  92.05%; recall:  86.66%; FB1:  89.27  868
+              ORG: precision:  91.97%; recall:  93.06%; FB1:  92.51  1357
+              PER: precision:  96.87%; recall:  97.34%; FB1:  97.10  1851
+
+2019-01-28 15:44:04,104 - logger - INFO - processed 46436 tokens with 5648 phrases; found: 5684 phrases; correct: 5145.
+accuracy:  98.17%; precision:  90.52%; recall:  91.09%; FB1:  90.80
+              LOC: precision:  91.30%; recall:  93.11%; FB1:  92.19  1701
+             MISC: precision:  81.43%; recall:  79.34%; FB1:  80.38  684
+              ORG: precision:  87.03%; recall:  89.64%; FB1:  88.32  1711
+              PER: precision:  97.36%; recall:  95.61%; FB1:  96.47  1588
+
