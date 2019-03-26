@@ -9,7 +9,7 @@ to_be_improved.txt
 __pycache__/
 Training_on_CoNLL_2003.ipynb
 test/.ipynb_checkpoints
-
+output/NER/*
 backup/*
 temp/*
 data/*
