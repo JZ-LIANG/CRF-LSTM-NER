@@ -11,7 +11,7 @@ import timeit
 import numpy as np
 import subprocess
 import sys
-from flair.data import TaggedCorpus
+from flair.data import Corpus 
 from flair.data_fetcher import  NLPTaskDataFetcher
 from typing import List
 
